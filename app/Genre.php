@@ -12,7 +12,7 @@ class Genre extends Model
     ];
 
     public function movies() {
-      return $this->hasMany('App\Movie');
+      return $this->belongsToMany('App\Movie');
     }
 
     public function actors() {
