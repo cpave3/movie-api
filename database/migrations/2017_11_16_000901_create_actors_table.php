@@ -16,9 +16,9 @@ class CreateActorsTable extends Migration
         Schema::create('actors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->timestamp('date_of_birth');
             $table->text('bio');
             $table->timestamps();
+            $table->datetime('date_of_birth')->nullable();
         });
     }
 

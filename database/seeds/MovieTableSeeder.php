@@ -16,13 +16,16 @@ class MovieTableSeeder extends Seeder
         $json = File::get("database/data/movies.json");
         $data = json_decode($json);
         foreach ($data as $object) {
-          Movie::create([
+          $movie = Movie::create([
             'id' => $object->id,
             'name' => $object->name,
             'rating' => $object->rating,
             'year' => $object->year,
             'description' => $object->description
           ]);
+          foreach ($object->genres as $g) {
+            $movie->genres()->attach($g);
+          }
         }
     }
 }

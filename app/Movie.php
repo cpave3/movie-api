@@ -12,12 +12,12 @@ class Movie extends Model
     'description'
   ];
 
-  public function genre() {
+  public function genres() {
     return $this->belongsToMany('App\Genre');
   }
 
   public function actors() {
-    return $this->belongsToMany('App\Actor');
+    return $this->belongsToMany('App\Actor')->withPivot('character');
   }
 
   public function images() {

@@ -1,0 +1,330 @@
+[
+ {
+   "id": 1,
+   "name": "Robert Downey Jr.",
+   "dob": "4/04/1965",
+   "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+   "characters": "Tony Stark",
+   "movies": [1,3,6,7,11,13]
+ },
+ {
+   "id": 2,
+   "name": "Gwyneth Paltrow",
+   "dob": "27/09/1972",
+   "bio": "A tall, wafer thin, delicate beauty, Gwyneth Kate Paltrow was born in Los Angeles, the daughter of noted producer and director Bruce Paltrow and Tony award-winning actress Blythe Danner. ",
+   "characters": "Pepper Potts",
+   "movies": [1,3,6,7,11,13]
+ },
+ {
+   "id": 3,
+   "name": "Terrence Howard",
+   "dob": "11/03/1969",
+   "bio": "Terrence Howard was born in Chicago, Illinois, to Anita Jeanine Williams (n e Hawkins) and Tyrone Howard. He was raised in Cleveland, Ohio.",
+   "characters": "James Rhodes",
+   "movies": [1]
+ },
+ {
+   "id": 4,
+   "name": "Jeff Bridges",
+   "dob": "4/12/1949",
+   "bio": "Jeffrey Leon Bridges was born on December 4, 1949 in Los Angeles, California, the son of well-known film and TV star Lloyd Bridges and his long-time wife Dorothy Dean Bridges(n e Simpson).",
+   "characters": "Obadiah Stane",
+   "movies": [1]
+ },
+ {
+   "id": 5,
+   "name": "Edward Norton",
+   "dob": "18/08/1969",
+   "bio": "American actor, filmmaker and activist Edward Harrison Norton was born on August 18, 1969, in Boston, Massachusetts, and was raised in Columbia, Maryland.",
+   "characters": "Bruce Banner",
+   "movies": [2]
+ },
+ {
+   "id": 6,
+   "name": "Liv Tyler",
+   "dob": "1/07/1977",
+   "bio": "Liv Tyler was born in New York City, New York. She is the daughter of Steven Tyler of the band Aerosmith, and Bebe Buell, former model (and Playboy Playmate of the Month) and stalwart of the backstage rock scene of the 1970s.",
+   "characters": "Dr. Elizabeth 'Betty' Ross",
+   "movies": [2]
+ },
+ {
+   "id": 7,
+   "name": "Tim Roth",
+   "dob": "14/05/1961",
+   "bio": "Often mistaken for an American because of his skill at imitating accents, actor Tim Roth was born Timothy Simon Roth on May 14, 1961 in Lambeth, London, England.",
+   "characters": "Emil Blonsky",
+   "movies": [2]
+ },
+ {
+   "id": 8,
+   "name": "William Hurt",
+   "dob": "20/03/1950",
+   "bio": "William McChord Hurt was born in Washington, D.C., to Claire Isabel (McGill) and Alfred McChord Hurt, who worked at the State Department.",
+   "characters": "Thaddeus Ross",
+   "movies": [2]
+ },
+ {
+   "id": 9,
+   "name": "Mickey Rourke",
+   "dob": "16/09/1952",
+   "bio": "Mickey Rourke was born Phillip Andre Rourke, Jr. on September 16, 1952, in Schenectady, New York, the son of Annette (Cameron) and Phillip Andre Rourke.",
+   "characters": "Ivan Vanko",
+   "movies": [3]
+ },
+ {
+   "id": 10,
+   "name": "Don Cheadle",
+   "dob": "29/11/1964",
+   "bio": "Donald Frank Cheadle was born in Kansas City, Missouri on November 29, 1964. His childhood found him moving from city to city with his family: mother Bettye (North), a teacher, father Donald Frank Cheadle, Sr., a clinical psychologist, sister Dawn, and brother. Colin",
+   "characters": "James Rhodes",
+   "movies": [3,7,13]
+ },
+ {
+   "id": 11,
+   "name": "Chris Hemsworth",
+   "dob": "11/08/1983",
+   "bio": "Chris Hemsworth was born in Melbourne, Australia, to Leonie (van Os), a teacher of English, and Craig Hemsworth, a social-services counselor.",
+   "characters": "Thor",
+   "movies": [4,6,8,14,16]
+ },
+ {
+   "id": 12,
+   "name": "Anthony Hopkins",
+   "dob": "31/12/1937",
+   "bio": "Anthony Hopkins was born on December 31, 1937, in Margam, Wales, to Muriel Anne (Yeats) and Richard Arthur Hopkins, a baker.",
+   "characters": "Odin",
+   "movies": [4,8,16]
+ },
+ {
+   "id": 13,
+   "name": "Natalie Portman",
+   "dob": "9/06/1981",
+   "bio": "Natalie Portman is the first person born in the 1980s to have won the Academy Award for Best Actress (for Black Swan(2010)).",
+   "characters": "Jane Foster",
+   "movies": [4,8]
+ },
+ {
+   "id": 14,
+   "name": "Tom Hiddleston",
+   "dob": "9/02/1981",
+   "bio": "Thomas William Hiddleston was born in Westminster, London, to English-born Diana Patricia (Servaes) and Scottish-born James Norman Hiddleston",
+   "characters": "Loki",
+   "movies": [4,6,8,14,16]
+ },
+ {
+   "id": 15,
+   "name": "Chris Evans",
+   "dob": "13/06/1981",
+   "bio": "Christopher Robert Evans began his acting career in typical fashion: performing in school productions and community theater.",
+   "characters": "Steve Rogers",
+   "movies": [5,6,9,11,13]
+ },
+ {
+   "id": 16,
+   "name": "Hugo Weaving",
+   "dob": "4/04/1960",
+   "bio": "Hugo Wallace Weaving was born on April 4, 1960 in Nigeria, to English parents Anne (Lennard), a tour guide and teacher, and Wallace Weaving, a seismologist.",
+   "characters": "Johann Schmidt",
+   "movies": [5]
+ },
+ {
+   "id": 17,
+   "name": "Samuel L. Jackson",
+   "dob": "21/12/1948",
+   "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+   "characters": "Nick Fury",
+   "movies": [1,3,4,5,6,7,8,9,11,13]
+ },
+ {
+   "id": 18,
+   "name": "Hayley Atwell",
+   "dob": "5/04/1982",
+   "bio": "Born in London, England, Hayley Elizabeth Atwell has dual citizenship of the United Kingdom and the United States. An only child, Hayley was named after actress Hayley Mills",
+   "characters": "Peggy Carter",
+   "movies": [5,6,9,13]
+ },
+ {
+   "id": 19,
+   "name": "Scarlett Johansson",
+   "dob": "22/11/1984",
+   "bio": "Scarlett Johansson was born in New York City. Her mother, Melanie Sloan, is from a Jewish family from the Bronx, and her father, Karsten Johansson, is a Danish-born architect, from Copenhagen.",
+   "characters": "Natasha Romanoff",
+   "movies": [6,3,9,11,13]
+ },
+ {
+   "id": 20,
+   "name": "Jeremy Renner",
+   "dob": "7/01/1971",
+   "bio": "Jeremy Lee Renner was born in Modesto, California, the son of Valerie (Tague) and Lee Renner, who managed a bowling alley.",
+   "characters": "Clint Barton",
+   "movies": [6,3,9,11,13]
+ },
+ {
+   "id": 21,
+   "name": "Guy Pearce",
+   "dob": "5/10/1967",
+   "bio": "Guy Edward Pearce was born 5 October, 1967 in Cambridgeshire, England, UK to Margaret Anne and Stuart Graham Pearce. His father was born in Auckland, New Zealand, to English and Scottish parents, while Guy's mother is English.",
+   "characters": "Aldrich Killian",
+   "movies": [7]
+ },
+ {
+   "id": 22,
+   "name": "Stellan Skarsg rd",
+   "dob": "13/06/1951",
+   "bio": "Stellan Skarsg rd was born in Gothenburg, V stra G talands l n, Sweden, to Gudrun (Larsson) and Jan Skarsg rd.",
+   "characters": "Erik Selvig",
+   "movies": [4,6,8]
+ },
+ {
+   "id": 23,
+   "name": "Chris Pratt",
+   "dob": "21/06/1979",
+   "bio": "Christopher Michael Pratt is an American film and television actor. He came to prominence from his television roles, including Bright Abbott in Everwood (2002), Ch  in The O.C.(2003), and Andy Dwyer and Parks and Recreation",
+   "characters": "Peter Quill",
+   "movies": [10,15]
+ },
+ {
+   "id": 24,
+   "name": "Vin Diesel",
+   "dob": "18/07/1967",
+   "bio": "Vin Diesel was born Mark Sinclair in Alameda County, California, along with his fraternal twin brother, Paul Vincent. He was raised by his astrologer/psychologist mother, Delora Sherleen (Sinclair), and adoptive father, Irving H. Vincent, an acting instructor and theater manager, in an artists' housing project in New York City's Greenwich Village",
+   "characters": "Groot",
+   "movies": [10,15]
+ },
+ {
+   "id": 25,
+   "name": "Bradley Cooper",
+   "dob": "5/01/1975",
+   "bio": "Bradley Charles Cooper was born on January 5, 1975 in Philadelphia, Pennsylvania. His mother, Gloria (Campano), is of Italian descent, and worked for a local NBC station.",
+   "characters": "Rocket Racoon",
+   "movies": [10,15]
+ },
+ {
+   "id": 26,
+   "name": "Zoe Saldana",
+   "dob": "19/06/1978",
+   "bio": "Zoe Saldana was born on June 19, 1978 in Passaic, New Jersey, to Asalia Nazario and Aridio Salda a. Her father was Dominican and her mother is Puerto Rican.",
+   "characters": "Gamora",
+   "movies": [10,15]
+ },
+ {
+   "id": 27,
+   "name": "Mark Ruffalo",
+   "dob": "22/11/1967",
+   "bio": "Mark Ruffalo was born in Kenosha, Wisconsin, to Marie Rose (Hebert), a stylist and hairdresser, and Frank Lawrence Ruffalo, a construction painter. His father's ancestry is Italian, and his mother is of half French-Canadian and half Italian descent.",
+   "characters": "Bruce Banner",
+   "movies": [6,11]
+ },
+ {
+   "id": 28,
+   "name": "Paul Rudd",
+   "dob": "6/04/1969",
+   "bio": "Paul Stephen Rudd was born in Passaic, New Jersey. His parents, Michael and Gloria, both from Jewish families, were born in the U.K. He has one sister, who is three years younger than he is.",
+   "characters": "Scott Lang",
+   "movies": [12,13]
+ },
+ {
+   "id": 29,
+   "name": "Michael Douglas",
+   "dob": "25/09/1944",
+   "bio": "An actor with over forty years of experience in theatre, film, and television, Michael Douglas branched out into independent feature production in 1975 with the Academy Award-winning One Flew Over the Cuckoo's Nest (1975). ",
+   "characters": "Hank Pym",
+   "movies": [12]
+ },
+ {
+   "id": 30,
+   "name": "Corey Stoll",
+   "dob": "14/03/1976",
+   "bio": "Corey Stoll was born on March 14, 1976 in New York City, New York, USA as Corey Daniel Stoll. He is an actor, known for Ant-Man (2015), The Strain (2014) and The Bourne Legacy (2012).",
+   "characters": "Darren Cross",
+   "movies": [12]
+ },
+ {
+   "id": 31,
+   "name": "Evangeline Lilly",
+   "dob": "3/08/1979",
+   "bio": "Evangeline Lilly, born in Fort Saskatchewan, Alberta in 1979, was discovered on the streets of Kelowna, British Columbia by the famous Ford modeling agency.",
+   "characters": "Hope van Dyne",
+   "movies": [12]
+ },
+ {
+   "id": 32,
+   "name": "Sebastian Stan",
+   "dob": "13/08/1982",
+   "bio": "Sebastian Stan was born on August 13, 1982, in Constanta, Romania. He moved with his mother to Vienna, Austria, when he was eight, and then to New York when he was twelve. Stan studied at Rutgers Mason Gross School of the Arts and spent a year at Shakespeare's Globe Theatre in London. ",
+   "characters": "James Barnes",
+   "movies": [5,9,13]
+ },
+ {
+   "id": 33,
+   "name": "Benedict Cumberbatch",
+   "dob": "19/07/1976",
+   "bio": "Benedict Timothy Carlton Cumberbatch was born and raised in London, England. His parents, Wanda Ventham and Timothy Carlton (Timothy Carlton Congdon Cumberbatch), are both actors. He is a grandson of submarine commander Henry Carlton Cumberbatch, and a great-grandson of diplomat Henry Arnold Cumberbatch CMG.",
+   "characters": "Stephen Strange",
+   "movies": [14]
+ },
+ {
+   "id": 34,
+   "name": "Chiwetel Ejiofor",
+   "dob": "10/07/1977",
+   "bio": "English actor Chiwetel Ejiofor is renowned for his portrayal of Solomon Northup in 12 Years a Slave (2013), for which he received Academy Award and Golden Globe Award nominations, along with the BAFTA Award for Best Actor. ",
+   "characters": "Mordo",
+   "movies": [14]
+ },
+ {
+   "id": 35,
+   "name": "Rachel McAdams",
+   "dob": "17/11/1978",
+   "bio": "Rachel Anne McAdams was born on November 17, 1978 in London, Ontario, Canada, to Sandra Kay (Gale), a nurse, and Lance Frederick McAdams, a truck driver and furniture mover. She is of English, Welsh, Irish, and Scottish descent. ",
+   "characters": "Christine Palmer",
+   "movies": [14]
+ },
+ {
+   "id": 36,
+   "name": "Dave Bautista",
+   "dob": "18/01/1969",
+   "bio": "David Michael Bautista, Jr. was born on January 18, 1969 in Washington, D.C., to Donna Raye (Mullins) and David Michael Bautista. His father is Filipino, and his mother has Greek ancestry.",
+   "characters": "Drax the Destroyer",
+   "movies": [10,15]
+ },
+ {
+   "id": 37,
+   "name": "Cate Blanchett",
+   "dob": "14/05/1969",
+   "bio": "Cate Blanchett was born on May 14, 1969 in Melbourne, Victoria, Australia, to June (Gamble), an Australian teacher and property developer, and Robert DeWitt Blanchett, Jr., an American advertising executive, originally from Texas.",
+   "characters": "Hela",
+   "movies": [16]
+ },
+ {
+   "id": 38,
+   "name": "Chadwick Boseman",
+   "dob": "29/11/1976",
+   "bio": "Chadwick Boseman was born on November 29, 1976 in Anderson, South Carolina, USA. He is an actor and producer, known for Captain America: Civil War (2016), 42 (2013) and Get on Up (2014).",
+   "characters": "T'Challa",
+   "movies": [13,17]
+ },
+ {
+   "id": 39,
+   "name": "Michael B. Jordan",
+   "dob": "9/02/1987",
+   "bio": "Michael B. Jordan, middle of three children, was born in Santa Ana, California and raised in Newark, New Jersey by Donna (Davis), and Michael A. Jordan. His middle name Bakari means \"noble promise\" in Swahili.",
+   "characters": "Erik Killmonger",
+   "movies": [17]
+ },
+ {
+   "id": 40,
+   "name": "Lupita Nyong'o",
+   "dob": "1/03/1983",
+   "bio": "Lupita Amondi Nyong'o was born March 1, 1983 in Mexico City, Mexico, to Kenyan parents, Dorothy Ogada Buyu and Peter Anyang' Nyong'o. Her father, a senator, was then a visiting lecturer in political science.",
+   "characters": "Nakia",
+   "movies": [17]
+ },
+ {
+   "id": 41,
+   "name": "Danai Gurira",
+   "dob": "14/02/1978",
+   "bio": "Danai Gurira was born in Grinnell, Iowa to parents from Zimbabwe, when her father was teaching Chemistry at Grinnell College. When she was 5, the family moved back to Zimbabwe.",
+   "characters": "Okoye",
+   "movies": [17]
+ }
+]
