@@ -45,5 +45,14 @@ services:
     links:
       - database:db
 
+  # composer
+  composer:
+    image: composer/composer
+    container_name: composer
+    working_dir: /var/www
+    volumes_from:
+      - app
+    command: install
+
 # volumes:
 #   dbdata:
