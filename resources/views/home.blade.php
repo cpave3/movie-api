@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in!
+                    {{-- {{Auth::user()->createApiKey()}} --}}
+                    @foreach (Auth::user()->apiKeys() as $key)
+                      {{print_r($key)}}
+                    @endforeach
                 </div>
             </div>
         </div>

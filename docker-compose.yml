@@ -50,13 +50,13 @@ services:
 
 
   # composer
-  composer:
-    image: composer
-    container_name: composer
-    working_dir: /var/www
-    volumes_from:
-      - app
-    command: install
+  # composer:
+  #   image: composer
+  #   container_name: composer
+  #   working_dir: /var/www
+  #   volumes_from:
+  #     - app
+  #   command: install
 
 # volumes:
 #   dbdata:
