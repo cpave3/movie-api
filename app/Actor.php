@@ -23,6 +23,10 @@ class Actor extends Model
       'pivot'
     ];
 
+    protected $appends = [
+      'age'
+    ];
+
     public function movies() {
       return $this->belongsToMany('App\Movie')->withPivot('character');
     }
@@ -35,4 +39,5 @@ class Actor extends Model
       //calculate current age from date_of_birth
       return Carbon::now()->diffInYears($this->date_of_birth);
     }
+
 }

@@ -15,7 +15,7 @@ class GenreTest extends TestCase
 
      public function test_it_can_create_a_genre() {
        $data = ["name" => "new genre"];
-       $this->json('POST', route('api.genres.create'), $data)
+       $this->json('POST', route('api.genres.store'), $data)
             ->assertStatus(201)
             ->assertJsonStructure([
               "*" => [
@@ -27,7 +27,7 @@ class GenreTest extends TestCase
 
      public function test_it_rejects_malformed_create_requests() {
        $data = ["invalid_key" => "new genre"];
-       $this->json('POST', route('api.genres.create'), $data)
+       $this->json('POST', route('api.genres.store'), $data)
             ->assertStatus(400);
      }
 
