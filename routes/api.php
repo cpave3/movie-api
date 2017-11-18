@@ -13,12 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::group(['prefix' => 'v1'], function() {
 
-Route::post('/login', 'API_LoginController@login')->name('api.login');
+  //Non secure Api Routes
+  Route::post('/login', 'API_LoginController@login')->name('api.login');
 
-Route::middleware(['auth.apikey'])->get('/user', function (Request $request) {
-    return $request->user(); // Returns the associated model to the API key
+  // Secure Api Routes
+  Route::group(['middleware' => 'auth.apikey'], function() {
+      Route::post('/genres', 'API_GenreController@store')->name('api.genres.create');
+      Route::get('/genres', 'API_GenreController@list')->name('api.genres.list');
+      Route::get('/genres/{genre_id}', 'API_GenreController@show')->name('api.genres.show');
+      Route::put('/genres/{genre_id}', 'API_GenreController@update')->name('api.genres.update');
+      Route::delete('/genres/{genre_id}', 'API_GenreController@delete')->name('api.genres.delete');
+  });
+
 });

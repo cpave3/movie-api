@@ -17,6 +17,12 @@ class Actor extends Model
       'date_of_birth'
     ];
 
+    protected $hidden = [
+      'created_at',
+      'updated_at',
+      'pivot'
+    ];
+
     public function movies() {
       return $this->belongsToMany('App\Movie')->withPivot('character');
     }
