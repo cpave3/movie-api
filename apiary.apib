@@ -1,0 +1,732 @@
+FORMAT: 1A
+HOST: https://github.com/cpave3/movie-api/
+
+# movie-api
+
+A simple API for interacting with data about various movies, actors and genres. 
+
+## Movies Collection [/movies]
+This section allows viewing existing and creating new movies
+
+### List All Movies [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Iron Man",
+                "year": "2008",
+                "rating": "7.90",
+                "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                "images": [
+                    {
+                        "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                        "mime": "image/jpeg",
+                        "size": 11948
+                    }
+                ],
+                "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 1,
+                        "name": "Robert Downey Jr.",
+                        "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                        "date_of_birth": "1965-04-04 00:00:00",
+                        "age": 52,
+                        "character": "Tony Stark",
+                        "images": [
+                            {
+                                "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
+                                "mime": "image/jpeg",
+                                "size": 11948
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+
+### Create a New Movie [POST]
+
+You may add a movie to the database using this action. It takes a JSON 
+object containing the movie's name, rating, genre(s), description and actor(s).
+Genre and actors should be passed in as an array of ids
+
++ Request (application/json)
+
+        {
+            "name": "Captain Marvel",
+            "year": "2019",
+            "rating": "0.0",
+            "description": "The plot is unknown at this time.",
+            "genres": [1,4,5],
+            "actors": [17]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /movies/18
+
+    + Body
+
+            {
+            "name": "Captain Marvel",
+            "year": "2019",
+            "rating": "0.0",
+            "description": "The plot is unknown at this time.",
+            "images": [],
+            "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 17,
+                        "name": "Samuel L. Jackson",
+                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                        "date_of_birth": "1948-12-21 00:00:00",
+                        "age": 68,
+                        "character": "Nick Fury",
+                        "images": [
+                            {
+                                "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                                "size": 11948
+                            }
+                        ]
+                    }
+                ]
+            }
+
+## Specific Movie [/movies/{movie_id}]
+This section allows retrieving specific movies, editing movies
+
+### Retrieve Movie [GET]
++ Parameters
+    + movie_id: `1` (string) - The id of the Movie.
+    
++ Response 200 (application/json)
+
+        
+        {
+            "name": "Iron Man",
+            "year": "2008",
+            "rating": "7.90",
+            "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+            "images": [
+                {
+                    "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                    "size": 11948
+                }
+            ],
+            "genres": [
+                {
+                    "id": 1,
+                    "name": "Action"
+                },
+                {
+                    "id": 4,
+                    "name": "Sci-Fi"
+                },
+                {
+                    "id": 5,
+                    "name": "Adventure"
+                }
+            ],
+            "actors": [
+                {
+                    "id": 1,
+                    "name": "Robert Downey Jr.",
+                    "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                    "date_of_birth": "1965-04-04 00:00:00",
+                    "age": 52,
+                    "character": "Tony Stark",
+                    "images": [
+                        {
+                            "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
+                            "size": 11948
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Gwyneth Paltrow",
+                    "bio": "A tall, wafer thin, delicate beauty, Gwyneth Kate Paltrow was born in Los Angeles, the daughter of noted producer and director Bruce Paltrow and Tony award-winning actress Blythe Danner.",
+                    "date_of_birth": "1972-09-27 00:00:00",
+                    "age": 45,
+                    "character": "Pepper Potts",
+                    "images": [
+                        {
+                            "url": "https://urlgoeshere.com/storage/gwyneth-paltrow.jpg",
+                            "size": 11948
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Terrance Howard",
+                    "bio": "Terrence Howard was born in Chicago, Illinois, to Anita Jeanine Williams (née Hawkins) and Tyrone Howard. He was raised in Cleveland, Ohio.",
+                    "date_of_birth": "1969-03-11 00:00:00",
+                    "age": 48,
+                    "character": "James Rhodes",
+                    "images": [
+                        {
+                            "url": "https://urlgoeshere.com/storage/terrance-howard.jpg",
+                            "size": 11948
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Jeff Bridges",
+                    "bio": "Robert Jeffrey Leon Bridges was born on December 4, 1949 in Los Angeles, California, the son of well-known film and TV star Lloyd Bridges and his long-time wife Dorothy Dean Bridges (née Simpson).",
+                    "date_of_birth": "1949-12-04 00:00:00",
+                    "age": 67,
+                    "character": "Obadiah Stane",
+                    "images": [
+                        {
+                            "url": "https://urlgoeshere.com/storage/jeff-bridges.jpg",
+                            "size": 11948
+                        }
+                    ]
+                },
+                {
+                    "id": 17,
+                    "name": "Samuel L. Jackson",
+                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                    "date_of_birth": "1948-12-21 00:00:00",
+                    "age": 68,
+                    "character": "Nick Fury",
+                    "images": [
+                        {
+                            "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                            "size": 11948
+                        }
+                    ]
+                }
+            ]
+        }
+
+### Update Movie [PUT]
+
+This action allows you to overwrite the data belonging to a movie. Only attributes which you specify will be affected.
+
++ Parameters
+    + movie_id: `18` (string) - The id of the Movie.
+
++ Request (application/json)
+
+        {
+            "name": "Captain Marvel: A new subtitle",
+            "rating": "7.8"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /movies/18
+
+    + Body
+
+            {
+            "name": "Captain Marvel: A new subtitle",
+            "year": "2019",
+            "rating": "7.8",
+            "description": "The plot is unknown at this time.",
+            "images": [],
+            "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 17,
+                        "name": "Samuel L. Jackson",
+                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                        "date_of_birth": "1948-12-21 00:00:00",
+                        "age": 68,
+                        "character": "Nick Fury",
+                        "images": [
+                            {
+                                "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                                "size": 11948
+                            }
+                        ]
+                    }
+                ]
+            }
+
+### Delete Movie [DELETE]
+
++ Parameters
+    + movie_id: `2` (string) - The ID of the movie
+    
++ Response 204 (application/json)
+
+## Movie Images [/movies/{movie_id}/images]
+
+### Upload an Image [POST]
+
+This action allows you upload base64 encoded images to a specific movie.
+This is only suitable for small-ish images due to base64 encoding file bloat.
+
++ Parameters
+    + movie_id: `3` (string) - The id of the Movie.
+
++ Request (application/json)
+
+        {
+            "file_name": "iron-man-2.jpg",
+            "raw_data": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADTASIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoooo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95ddPm3J6tbv+vw05f5eh8If8E2/i546+P8A8c4/C/ifxF4qnuP2YNAm8D+LpJZZoIPFviKS5aKO8nBO24I0+yguwSWCtrHXepx6p/wTy+GVl4kbxL8aNS8eaj8TfGXjW6vPD7azNCtraadpenarfpbabawLaWu1YWeXzHkjeSSUufNkQRmvX/gb+zzovwCuPGdxpdzqd/fePfE114q1e71CSN5pbmdY41jUoiARRQwwwxqQSI4UBZjlj3lVztqMpfFbX/FLWdvK7lFf3LLYhxSlKMfhvounLHSP4KMn/eu97WKKKKkoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA/9k="
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /movies/18/images
+
+    + Body
+
+            [
+                {
+                    "url": "https://urlgoeshere.com/storage/iron-man-2.jpg",
+                    "mime": "image/jpeg",
+                    "size": 11948
+                }
+            ]
+
+### Retrieve all Images for a specified Movie [GET]
+
++ Parameters
+    + movie_id: `1` (string) - The id of the Movie.
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                "mime": "image/jpeg",
+                "size": 11948
+            }
+        ]
+
+## Specific Movie Image [/movies/{movie_id}/images/{image_id}]
+
+### Retrieve Specific Image [GET]
+
++ Parameters
+    + movie_id: `1` (string) - The ID of the movie
+    + image_id: `1` (string) - The ID of the Image
+    
++ Response 200 (application/json)
+    
+        {
+            "id": 1,
+            "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+            "mime": "image/jpeg",
+            "size": 11948
+        }
+
+### Delete Specific Image [DELETE]
+
++ Parameters
+    + movie_id: `1` (string) - The ID of the movie
+    + image_id: `1` (string) - The ID of the Image
+    
++ Response 204 (application/json)
+
+## Genre Collection [/genres]
+This section allows for interaction with the Movie Genres
+
+### List all Genres [GET]
+This action returns a list of all Genres and their ids. 
+
++ Response 200 (appliction/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Action"
+            },
+            {
+                "id": 2,
+                "name": "Comedy"
+            },
+            {
+                "id": 3,
+                "name": "Fantasy"
+            },
+            {
+                "id": 4,
+                "name": "Sci-Fi"
+            },
+            {
+                "id": 5,
+                "name": "Adventure"
+            },
+            {
+                "id": 6,
+                "name": "Thriller"
+            },
+        ]
+        
+### Create a New Genre [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Crime"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /genres/9
+
+    + Body
+    
+            {
+                "id": 7,
+                "name": "Crime"
+            }
+            
+## Specific Genre [/genres/{genre_id}]
+
+### Retrieve Genre [GET]
++ Parameters
+    + genre_id: `1` (string) - The ID of the Genre
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "Action",
+            "movies": [
+                {
+                   "id": "1",
+                   "name": "Iron Man",
+                   "rating": "7.9",
+                   "year": "2008",
+                   "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                   "actors": [
+                        {
+                           "id": 1,
+                           "name": "Robert Downey Jr.",
+                           "dob": "4/04/1965",
+                           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                           "characters": "Tony Stark"
+                         }
+                   ]
+                 }
+            ]
+        }
+    
+### Update Genre [PUT]
+This action allows you to update a genre's name. it also allows you to control which movies are associated with the genre using the following optional array keys:
+
+- moviesSync: Synchronise the selected Genre with the spcified movie ids
+- moviesAttach: Attach these moves to the Genre in addition to any existing movies
+- moviesDetach: Detach these movies from the Genre.
+
+If more than one of hese optional arrays are used, they will be applied in the order listed above.
+
++ Parameters
+    + genre_id: `1` (string) - The ID of the Genre
+    
++ Request (application/json)
+
+        {
+            "name": "Action Movies",
+            "moviesSync": [1,2,4,5,6],
+            "moviesAttach": [3],
+            "moviesDetach": [5,6]
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "Action Movies",
+            "movies": [
+                {
+                   "id": "1",
+                   "name": "Iron Man",
+                   "rating": "7.9",
+                   "year": "2008",
+                   "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                   "actors": [
+                        {
+                           "id": 1,
+                           "name": "Robert Downey Jr.",
+                           "dob": "4/04/1965",
+                           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                           "characters": "Tony Stark"
+                         }
+                   ]
+                 }
+            ]
+        }
+    
+### Delete Genre [DELETE]
+
++ Parameters
+    + genre_id: `1` (string) - The ID of the Genre
+    
++ Response 204 (application/json)
+
+## Actor Collection [/actors]
+
+### Create a New Actor [POST]
+
++ Request (application/json)
+
+        {
+           "name": "Tom Holland",
+           "dob": "01/06/1996",
+           "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+           "movies": [
+                {
+                    "id": 13,
+                    "character": "Peter Parker"
+                }
+           ]
+         }
+         
++ Response 201 (application/json)
+    
+    + Headers
+        
+            Location: /actors/42
+        
+    + Body
+        
+            {
+               "name": "Tom Holland",
+               "dob": "01/06/1996",
+               "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+            }
+
+### List all Actors [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "id": 1,
+               "name": "Robert Downey Jr.",
+               "dob": "4/04/1965",
+               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+               "movies": [
+                    "id": 1,
+                    "character": "Tony Stark"
+               ]
+            }
+        ]
+        
+## Specific Actor [/actors/{actor_id}]
+
+### Retrieve Actor [GET]
+
++ Parameters
+    + actor_id: `1` (string) - ID of the actor
+    
++ Response 200 (application/json)
+    
+        [
+            {
+               "id": 1,
+               "name": "Robert Downey Jr.",
+               "dob": "4/04/1965",
+               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+               "movies": [
+                    {
+                        "id": 1,
+                        "character": "Tony Stark"
+                    }
+               ]
+            }
+        ]
+
+### Update Actor [PUT]
+
++ Parameters
+    + actor_id: `1` (string) - ID of the actor
+    
++ Request (application/json)
+
+        {
+            "name": "Robert Downey Jr.",
+            "dob": "4/04/1965",
+            "bio": "Updated Bio",
+            "moviesSync": [
+                {
+                    "id": 1,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 2,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 3,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 4,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 5,
+                    "character": "Tony Stark"
+                }
+            ],
+            "moviesAttach": [
+                {
+                    "id": 6,
+                    "character": "Tony Stark"
+                }
+            ],
+            "moviesDetach": [2, 4, 5]    
+        }
+        
++ Response 200 (application/json)
+
+        {
+           "id": 1,
+           "name": "Robert Downey Jr.",
+           "dob": "4/04/1965",
+           "bio": "Updated Bio",
+           "movies": [
+                {
+                    "id": 1,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 3,
+                    "character": "Tony Stark"
+                },
+                {
+                    "id": 6,
+                    "character": "Tony Stark"
+                }
+           ]
+        }
+
+### Delete Actor [DELETE]
+
++ Parameters
+    + actor_id: `1` (string) - ID of the actor
+    
++ Response 204 (application/json)
+
+## Actor Images [/actors/{actor_id}/images]
+
+### Upload an Image [POST]
+
+This action allows you upload base64 encoded images to a specific actor.
+This is only suitable for small-ish images due to base64 encoding file bloat.
+
++ Parameters
+    + actor_id: `1` (string) - The id of the Actor.
+
++ Request (application/json)
+
+        {
+            "file_name": "rdj.jpg",
+            "raw_data": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADTASIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoooo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95ddPm3J6tbv+vw05f5eh8If8E2/i546+P8A8c4/C/ifxF4qnuP2YNAm8D+LpJZZoIPFviKS5aKO8nBO24I0+yguwSWCtrHXepx6p/wTy+GVl4kbxL8aNS8eaj8TfGXjW6vPD7azNCtraadpenarfpbabawLaWu1YWeXzHkjeSSUufNkQRmvX/gb+zzovwCuPGdxpdzqd/fePfE114q1e71CSN5pbmdY41jUoiARRQwwwxqQSI4UBZjlj3lVztqMpfFbX/FLWdvK7lFf3LLYhxSlKMfhvounLHSP4KMn/eu97WKKKKkoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA/9k="
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /actors/1/images
+
+    + Body
+
+            [
+                {
+                    "url": "https://urlgoeshere.com/storage/rdj.jpg",
+                    "mime": "image/jpeg",
+                    "size": 11948
+                }
+            ]
+
+### Retrieve all Images for a specified Movie [GET]
+
++ Parameters
+    + actor_id: `1` (string) - The id of the Actor.
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 14,
+                "url": "https://urlgoeshere.com/storage/rdj.jpg",
+                "mime": "image/jpeg",
+                "size": 11948
+            }
+        ]
+
+## Specific Movie Image [/actors/{actor_id}/images/{image_id}]
+
+### Retrieve Specific Image [GET]
+
++ Parameters
+    + actor_id: `1` (string) - The ID of the actor
+    + image_id: `18` (string) - The ID of the Image
+    
++ Response 200 (application/json)
+    
+        {
+            "id": 18,
+            "url": "https://urlgoeshere.com/storage/rdj.jpg",
+            "mime": "image/jpeg",
+            "size": 11948
+        }
+
+### Delete Specific Image [DELETE]
+
++ Parameters
+    + actor_id: `1` (string) - The ID of the actor
+    + image_id: `18` (string) - The ID of the Image
+    
++ Response 204 (application/json)
