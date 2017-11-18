@@ -3,7 +3,7 @@ HOST: https://github.com/cpave3/movie-api/
 
 # movie-api
 
-A simple API for interacting with data about various movies, actors and genres. 
+A simple API for interacting with data about various movies, actors and genres.
 
 ## Movies Collection [/movies]
 This section allows viewing existing and creating new movies
@@ -20,6 +20,7 @@ This section allows viewing existing and creating new movies
                 "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
                 "images": [
                     {
+                        "id": 1,
                         "url": "https://urlgoeshere.com/storage/iron-man.jpg",
                         "mime": "image/jpeg",
                         "size": 11948
@@ -49,6 +50,7 @@ This section allows viewing existing and creating new movies
                         "character": "Tony Stark",
                         "images": [
                             {
+                                "id": 17,
                                 "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
                                 "mime": "image/jpeg",
                                 "size": 11948
@@ -61,7 +63,7 @@ This section allows viewing existing and creating new movies
 
 ### Create a New Movie [POST]
 
-You may add a movie to the database using this action. It takes a JSON 
+You may add a movie to the database using this action. It takes a JSON
 object containing the movie's name, rating, genre(s), description and actor(s).
 Genre and actors should be passed in as an array of ids
 
@@ -73,7 +75,12 @@ Genre and actors should be passed in as an array of ids
             "rating": "0.0",
             "description": "The plot is unknown at this time.",
             "genres": [1,4,5],
-            "actors": [17]
+            "actors": [
+                {
+                  "id": 17,
+                  "character": "Nick Fury"
+                }
+            ]
         }
 
 + Response 201 (application/json)
@@ -114,7 +121,9 @@ Genre and actors should be passed in as an array of ids
                         "character": "Nick Fury",
                         "images": [
                             {
+                                "id": 14,
                                 "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                                "mime": "image/jpeg",
                                 "size": 11948
                             }
                         ]
@@ -128,10 +137,10 @@ This section allows retrieving specific movies, editing movies
 ### Retrieve Movie [GET]
 + Parameters
     + movie_id: `1` (string) - The id of the Movie.
-    
+
 + Response 200 (application/json)
 
-        
+
         {
             "name": "Iron Man",
             "year": "2008",
@@ -139,7 +148,9 @@ This section allows retrieving specific movies, editing movies
             "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
             "images": [
                 {
+                    "id": 1,
                     "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                    "mime": "image/jpeg",
                     "size": 11948
                 }
             ],
@@ -167,63 +178,9 @@ This section allows retrieving specific movies, editing movies
                     "character": "Tony Stark",
                     "images": [
                         {
+                            "id": 14,
                             "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
-                            "size": 11948
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "name": "Gwyneth Paltrow",
-                    "bio": "A tall, wafer thin, delicate beauty, Gwyneth Kate Paltrow was born in Los Angeles, the daughter of noted producer and director Bruce Paltrow and Tony award-winning actress Blythe Danner.",
-                    "date_of_birth": "1972-09-27 00:00:00",
-                    "age": 45,
-                    "character": "Pepper Potts",
-                    "images": [
-                        {
-                            "url": "https://urlgoeshere.com/storage/gwyneth-paltrow.jpg",
-                            "size": 11948
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "name": "Terrance Howard",
-                    "bio": "Terrence Howard was born in Chicago, Illinois, to Anita Jeanine Williams (née Hawkins) and Tyrone Howard. He was raised in Cleveland, Ohio.",
-                    "date_of_birth": "1969-03-11 00:00:00",
-                    "age": 48,
-                    "character": "James Rhodes",
-                    "images": [
-                        {
-                            "url": "https://urlgoeshere.com/storage/terrance-howard.jpg",
-                            "size": 11948
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "name": "Jeff Bridges",
-                    "bio": "Robert Jeffrey Leon Bridges was born on December 4, 1949 in Los Angeles, California, the son of well-known film and TV star Lloyd Bridges and his long-time wife Dorothy Dean Bridges (née Simpson).",
-                    "date_of_birth": "1949-12-04 00:00:00",
-                    "age": 67,
-                    "character": "Obadiah Stane",
-                    "images": [
-                        {
-                            "url": "https://urlgoeshere.com/storage/jeff-bridges.jpg",
-                            "size": 11948
-                        }
-                    ]
-                },
-                {
-                    "id": 17,
-                    "name": "Samuel L. Jackson",
-                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
-                    "date_of_birth": "1948-12-21 00:00:00",
-                    "age": 68,
-                    "character": "Nick Fury",
-                    "images": [
-                        {
-                            "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                            "mime": "image/jpeg",
                             "size": 11948
                         }
                     ]
@@ -283,7 +240,9 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
                         "character": "Nick Fury",
                         "images": [
                             {
+                                "id": 14,
                                 "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
+                                "mime": "image/jpeg",
                                 "size": 11948
                             }
                         ]
@@ -295,7 +254,7 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
 
 + Parameters
     + movie_id: `2` (string) - The ID of the movie
-    
+
 + Response 204 (application/json)
 
 ## Movie Images [/movies/{movie_id}/images]
@@ -319,12 +278,13 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
     + Headers
 
-            Location: /movies/18/images
+            Location: /movies/3/images
 
     + Body
 
             [
                 {
+                    "id": 19,
                     "url": "https://urlgoeshere.com/storage/iron-man-2.jpg",
                     "mime": "image/jpeg",
                     "size": 11948
@@ -335,7 +295,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
 + Parameters
     + movie_id: `1` (string) - The id of the Movie.
-    
+
 + Response 200 (application/json)
 
         [
@@ -354,9 +314,9 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 + Parameters
     + movie_id: `1` (string) - The ID of the movie
     + image_id: `1` (string) - The ID of the Image
-    
+
 + Response 200 (application/json)
-    
+
         {
             "id": 1,
             "url": "https://urlgoeshere.com/storage/iron-man.jpg",
@@ -369,44 +329,42 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 + Parameters
     + movie_id: `1` (string) - The ID of the movie
     + image_id: `1` (string) - The ID of the Image
-    
+
 + Response 204 (application/json)
 
 ## Genre Collection [/genres]
 This section allows for interaction with the Movie Genres
 
 ### List all Genres [GET]
-This action returns a list of all Genres and their ids. 
+This action returns a list of all Genres and their ids.
 
 + Response 200 (appliction/json)
 
         [
             {
                 "id": 1,
-                "name": "Action"
-            },
-            {
-                "id": 2,
-                "name": "Comedy"
-            },
-            {
-                "id": 3,
-                "name": "Fantasy"
-            },
-            {
-                "id": 4,
-                "name": "Sci-Fi"
-            },
-            {
-                "id": 5,
-                "name": "Adventure"
-            },
-            {
-                "id": 6,
-                "name": "Thriller"
-            },
+                "name": "Action",
+                "movies": [
+                    {
+                       "id": "1",
+                       "name": "Iron Man",
+                       "rating": "7.9",
+                       "year": "2008",
+                       "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                       "actors": [
+                            {
+                               "id": 1,
+                               "name": "Robert Downey Jr.",
+                               "dob": "4/04/1965",
+                               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                               "character": "Tony Stark"
+                             }
+                       ]
+                     }
+                ]
+            }
         ]
-        
+
 ### Create a New Genre [POST]
 
 + Request (application/json)
@@ -422,12 +380,12 @@ This action returns a list of all Genres and their ids.
             Location: /genres/9
 
     + Body
-    
+
             {
                 "id": 7,
                 "name": "Crime"
             }
-            
+
 ## Specific Genre [/genres/{genre_id}]
 
 ### Retrieve Genre [GET]
@@ -452,13 +410,13 @@ This action returns a list of all Genres and their ids.
                            "name": "Robert Downey Jr.",
                            "dob": "4/04/1965",
                            "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                           "characters": "Tony Stark"
+                           "character": "Tony Stark"
                          }
                    ]
                  }
             ]
         }
-    
+
 ### Update Genre [PUT]
 This action allows you to update a genre's name. it also allows you to control which movies are associated with the genre using the following optional array keys:
 
@@ -470,7 +428,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
 
 + Parameters
     + genre_id: `1` (string) - The ID of the Genre
-    
+
 + Request (application/json)
 
         {
@@ -479,7 +437,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
             "moviesAttach": [3],
             "moviesDetach": [5,6]
         }
-        
+
 + Response 200 (application/json)
 
         {
@@ -498,18 +456,18 @@ If more than one of hese optional arrays are used, they will be applied in the o
                            "name": "Robert Downey Jr.",
                            "dob": "4/04/1965",
                            "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                           "characters": "Tony Stark"
+                           "character": "Tony Stark"
                          }
                    ]
                  }
             ]
         }
-    
+
 ### Delete Genre [DELETE]
 
 + Parameters
     + genre_id: `1` (string) - The ID of the Genre
-    
+
 + Response 204 (application/json)
 
 ## Actor Collection [/actors]
@@ -529,19 +487,25 @@ If more than one of hese optional arrays are used, they will be applied in the o
                 }
            ]
          }
-         
+
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             Location: /actors/42
-        
+
     + Body
-        
+
             {
                "name": "Tom Holland",
                "dob": "01/06/1996",
                "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+               "movies": [
+                    {
+                        "id": 13,
+                        "character": "Peter Parker"
+                    }
+               ]
             }
 
 ### List all Actors [GET]
@@ -560,36 +524,36 @@ If more than one of hese optional arrays are used, they will be applied in the o
                ]
             }
         ]
-        
+
 ## Specific Actor [/actors/{actor_id}]
 
 ### Retrieve Actor [GET]
 
 + Parameters
     + actor_id: `1` (string) - ID of the actor
-    
+
 + Response 200 (application/json)
-    
-        [
-            {
-               "id": 1,
-               "name": "Robert Downey Jr.",
-               "dob": "4/04/1965",
-               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-               "movies": [
-                    {
-                        "id": 1,
-                        "character": "Tony Stark"
-                    }
-               ]
-            }
-        ]
+
+
+        {
+           "id": 1,
+           "name": "Robert Downey Jr.",
+           "dob": "4/04/1965",
+           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+           "movies": [
+                {
+                    "id": 1,
+                    "character": "Tony Stark"
+                }
+           ]
+        }
+
 
 ### Update Actor [PUT]
 
 + Parameters
     + actor_id: `1` (string) - ID of the actor
-    
+
 + Request (application/json)
 
         {
@@ -624,9 +588,9 @@ If more than one of hese optional arrays are used, they will be applied in the o
                     "character": "Tony Stark"
                 }
             ],
-            "moviesDetach": [2, 4, 5]    
+            "moviesDetach": [2, 4, 5]
         }
-        
+
 + Response 200 (application/json)
 
         {
@@ -654,7 +618,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
 
 + Parameters
     + actor_id: `1` (string) - ID of the actor
-    
+
 + Response 204 (application/json)
 
 ## Actor Images [/actors/{actor_id}/images]
@@ -678,12 +642,13 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
     + Headers
 
-            Location: /actors/1/images
+            Location: /actors/1/images/15
 
     + Body
 
             [
                 {
+                    "id": 14,
                     "url": "https://urlgoeshere.com/storage/rdj.jpg",
                     "mime": "image/jpeg",
                     "size": 11948
@@ -694,7 +659,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
 + Parameters
     + actor_id: `1` (string) - The id of the Actor.
-    
+
 + Response 200 (application/json)
 
         [
@@ -713,11 +678,11 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 + Parameters
     + actor_id: `1` (string) - The ID of the actor
     + image_id: `18` (string) - The ID of the Image
-    
+
 + Response 200 (application/json)
-    
+
         {
-            "id": 18,
+            "id": 14,
             "url": "https://urlgoeshere.com/storage/rdj.jpg",
             "mime": "image/jpeg",
             "size": 11948
@@ -728,5 +693,5 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 + Parameters
     + actor_id: `1` (string) - The ID of the actor
     + image_id: `18` (string) - The ID of the Image
-    
+
 + Response 204 (application/json)
