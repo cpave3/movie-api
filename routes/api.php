@@ -31,16 +31,29 @@ Route::group(['prefix' => 'v1'], function() {
       // Actors
       Route::post('/actors', 'API_ActorController@store')->name('api.actors.store');
       Route::get('/actors', 'API_ActorController@list')->name('api.actors.list');
-      Route::get('/actors/{genre_id}', 'API_ActorController@show')->name('api.actors.show');
-      Route::put('/actors/{genre_id}', 'API_ActorController@update')->name('api.actors.update');
-      Route::delete('/actors/{genre_id}', 'API_ActorController@delete')->name('api.actors.delete');
+      Route::get('/actors/{actor_id}', 'API_ActorController@show')->name('api.actors.show');
+      Route::put('/actors/{actor_id}', 'API_ActorController@update')->name('api.actors.update');
+      Route::delete('/actors/{actor_id}', 'API_ActorController@delete')->name('api.actors.delete');
+      // IMAGES
+      Route::post('/actors/{actor_id}/images', 'API_ImageController@store')->name('api.actors.images.store');
+      Route::get('/actors/{actor_id}/images', 'API_ImageController@list')->name('api.actors.images.list');
+      Route::get('/actors/{actor_id}/images/{image_id}', 'API_ImageController@show')->name('api.actors.images.show');
+      Route::delete('/actors/{actor_id}/images/{image_id}', 'API_ImageController@delete')->name('api.actors.images.delete');
 
       // Movies
       Route::post('/movies', 'API_MovieController@store')->name('api.movies.store');
       Route::get('/movies', 'API_MovieController@list')->name('api.movies.list');
-      Route::get('/movies/{genre_id}', 'API_MovieController@show')->name('api.movies.show');
-      Route::put('/movies/{genre_id}', 'API_MovieController@update')->name('api.movies.update');
-      Route::delete('/movies/{genre_id}', 'API_MovieController@delete')->name('api.movies.delete');
+      Route::get('/movies/{movie_id}', 'API_MovieController@show')->name('api.movies.show');
+      Route::put('/movies/{movie_id}', 'API_MovieController@update')->name('api.movies.update');
+      Route::delete('/movies/{movie_id}', 'API_MovieController@delete')->name('api.movies.delete');
+      // IMAGES
+      Route::post('/movies/{movie_id}/images', 'API_ImageController@store')->name('api.movies.images.store');
+      Route::get('/movies/{movie_id}/images', 'API_ImageController@list')->name('api.movies.images.list');
+      Route::get('/movies/{movie_id}/images/{image_id}', 'API_ImageController@show')->name('api.movies.images.show');
+      Route::delete('/movies/{movie_id}/images/{image_id}', 'API_ImageController@delete')->name('api.movies.images.delete');
+
+
+
   });
 
 });

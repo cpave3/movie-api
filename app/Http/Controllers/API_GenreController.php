@@ -27,7 +27,7 @@ class API_GenreController extends Controller
         return response()->json($res, 201);
       } else {
         //Bad Request
-        return response(null, 400);
+        return response()->json([], 400);
       }
 
     }

@@ -23,7 +23,7 @@ class API_LoginController extends Controller
            foreach ($user->apiKeys as $apiKey) {
              $response['keys'][] = $apiKey->key;
            }
-           dd($response);
+          return response()->json($response, 200);
        }
     }
 }
