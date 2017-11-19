@@ -18,10 +18,8 @@ class GenreTest extends TestCase
        $this->json('POST', route('api.genres.store'), $data)
             ->assertStatus(201)
             ->assertJsonStructure([
-              "*" => [
                 "id",
                 "name"
-              ]
             ]);
      }
 
@@ -64,7 +62,6 @@ class GenreTest extends TestCase
        $this->json('GET', route('api.genres.show', 1))
             ->assertStatus(200)
             ->assertJsonStructure([
-              "*" => [
                 "id",
                 "name",
                 "movies" => [
@@ -84,9 +81,8 @@ class GenreTest extends TestCase
                       ]
                     ]
                   ]
-                  ]
-              ]
-            ]);;
+                ]
+            ]);
      }
 
      public function test_it_fails_finding_fake_ids() {

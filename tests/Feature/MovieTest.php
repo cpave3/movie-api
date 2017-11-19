@@ -73,7 +73,6 @@ class MovieTest extends TestCase
       $this->json('POST', route('api.movies.store'), $data)
            ->assertStatus(201)
            ->assertJsonStructure([
-             "*" => [
                "id",
                "name",
                "year",
@@ -113,7 +112,6 @@ class MovieTest extends TestCase
                    ]
                  ]
                ]
-             ]
            ]);
     }
 
@@ -127,7 +125,6 @@ class MovieTest extends TestCase
       $this->json("GET", route('api.movies.show', 1))
             ->assertStatus(200)
             ->assertJsonStructure([
-              "*" => [
                 "id",
                 "name",
                 "year",
@@ -162,7 +159,6 @@ class MovieTest extends TestCase
                     ]
                   ]
                 ]
-              ]
             ]);
     }
 
@@ -195,7 +191,6 @@ class MovieTest extends TestCase
       $this->json('PUT', route('api.movies.update', 1), $data)
            ->assertStatus(200)
            ->assertJsonStructure([
-             "*" => [
                "id",
                "name",
                "year",
@@ -230,7 +225,6 @@ class MovieTest extends TestCase
                    ]
                  ]
                ]
-             ]
            ]);
     }
 }

@@ -20,7 +20,7 @@ class API_GenreController extends Controller
       if (isset($json['name'])) {
         // Mandatory fields are valid
         $genre = Genre::create($json);
-        $res[] = [
+        $res = [
           "id" => $genre->id,
           "name" => $genre->name
         ];
@@ -41,7 +41,7 @@ class API_GenreController extends Controller
           foreach ($movie->actors as $actor) {
             $actor->character = $actor->pivot->character;
             $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-            unset($actor->date_of_birth);
+
           }
         }
 
@@ -61,11 +61,11 @@ class API_GenreController extends Controller
         foreach ($movie->actors as $actor) {
           $actor->character = $actor->pivot->character;
           $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-          unset($actor->date_of_birth);
+
         }
 
       }
-      $res[] = [
+      $res = [
         "id" => $genre->id,
         "name" => $genre->name,
         "movies" => $genre->movies
@@ -97,7 +97,7 @@ class API_GenreController extends Controller
         foreach ($movie->actors as $actor) {
           $actor->character = $actor->pivot->character;
           $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-          unset($actor->date_of_birth);
+
         }
 
       }

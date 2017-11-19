@@ -5,6 +5,27 @@ HOST: https://github.com/cpave3/movie-api/
 
 A simple API for interacting with data about various movies, actors and genres.
 
+## User Authentication [/login]
+
+### Login [POST]
+
++ Request (application/json)
+
+        {
+            "email": "admin@admin.com",
+            "password": "secret"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "name": "Administrator",
+            "email": "admin@admin.com",
+            "keys": [
+                "ced90d6d5738f3d469e5f381541e24c05c67be77"
+            ]
+        }
+
 ## Movies Collection [/movies]
 This section allows viewing existing and creating new movies
 
@@ -14,22 +35,23 @@ This section allows viewing existing and creating new movies
 
         [
             {
+                "id": 1,
                 "name": "Iron Man",
                 "year": "2008",
-                "rating": "7.90",
+                "rating": 7.9,
                 "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
                 "images": [
                     {
-                        "id": 1,
-                        "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                        "id": 4,
+                        "url": "http://localhost:8080/images/ironman.jpg",
                         "mime": "image/jpeg",
-                        "size": 11948
+                        "size": 13354
                     }
                 ],
                 "genres": [
                     {
                         "id": 1,
-                        "name": "Action"
+                        "name": "Action Movies"
                     },
                     {
                         "id": 4,
@@ -46,14 +68,15 @@ This section allows viewing existing and creating new movies
                         "name": "Robert Downey Jr.",
                         "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
                         "date_of_birth": "1965-04-04 00:00:00",
-                        "age": 52,
                         "character": "Tony Stark",
+                        "dob": "04/04/1965",
+                        "age": 52,
                         "images": [
                             {
-                                "id": 17,
-                                "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
+                                "id": 1,
+                                "url": "http://localhost:8080/images/rdj.jpg",
                                 "mime": "image/jpeg",
-                                "size": 11948
+                                "size": 11684
                             }
                         ]
                     }
@@ -87,20 +110,22 @@ Genre and actors should be passed in as an array of ids
 
     + Headers
 
-            Location: /movies/18
+            Location: /movies/19
 
     + Body
 
+        [
             {
-            "name": "Captain Marvel",
-            "year": "2019",
-            "rating": "0.0",
-            "description": "The plot is unknown at this time.",
-            "images": [],
-            "genres": [
+                "id": 19,
+                "name": "Captain Marvel",
+                "year": "2019",
+                "rating": "0.0",
+                "description": "The plot is unknown at this time.",
+                "images": [],
+                "genres": [
                     {
                         "id": 1,
-                        "name": "Action"
+                        "name": "Action Movies"
                     },
                     {
                         "id": 4,
@@ -117,19 +142,14 @@ Genre and actors should be passed in as an array of ids
                         "name": "Samuel L. Jackson",
                         "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
                         "date_of_birth": "1948-12-21 00:00:00",
-                        "age": 68,
                         "character": "Nick Fury",
-                        "images": [
-                            {
-                                "id": 14,
-                                "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
-                                "mime": "image/jpeg",
-                                "size": 11948
-                            }
-                        ]
+                        "dob": "21/12/1948",
+                        "images": [],
+                        "age": 68
                     }
                 ]
             }
+        ]
 
 ## Specific Movie [/movies/{movie_id}]
 This section allows retrieving specific movies, editing movies
@@ -141,52 +161,56 @@ This section allows retrieving specific movies, editing movies
 + Response 200 (application/json)
 
 
-        {
-            "name": "Iron Man",
-            "year": "2008",
-            "rating": "7.90",
-            "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-            "images": [
-                {
-                    "id": 1,
-                    "url": "https://urlgoeshere.com/storage/iron-man.jpg",
-                    "mime": "image/jpeg",
-                    "size": 11948
-                }
-            ],
-            "genres": [
-                {
-                    "id": 1,
-                    "name": "Action"
-                },
-                {
-                    "id": 4,
-                    "name": "Sci-Fi"
-                },
-                {
-                    "id": 5,
-                    "name": "Adventure"
-                }
-            ],
-            "actors": [
-                {
-                    "id": 1,
-                    "name": "Robert Downey Jr.",
-                    "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                    "date_of_birth": "1965-04-04 00:00:00",
-                    "age": 52,
-                    "character": "Tony Stark",
-                    "images": [
-                        {
-                            "id": 14,
-                            "url": "https://urlgoeshere.com/storage/robert-downey-jr.jpg",
-                            "mime": "image/jpeg",
-                            "size": 11948
-                        }
-                    ]
-                }
-            ]
-        }
+        [
+            {
+                "id": 1,
+                "name": "Iron Man",
+                "year": "2008",
+                "rating": 7.9,
+                "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                "images": [
+                    {
+                        "id": 4,
+                        "url": "http://localhost:8080/images/ironman.jpg",
+                        "mime": "image/jpeg",
+                        "size": 13354
+                    }
+                ],
+                "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action Movies"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 1,
+                        "name": "Robert Downey Jr.",
+                        "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                        "date_of_birth": "1965-04-04 00:00:00",
+                        "character": "Tony Stark",
+                        "dob": "04/04/1965",
+                        "age": 52,
+                        "images": [
+                            {
+                                "id": 1,
+                                "url": "http://localhost:8080/images/rdj.jpg",
+                                "mime": "image/jpeg",
+                                "size": 11684
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
 
 ### Update Movie [PUT]
 
@@ -210,45 +234,40 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
 
     + Body
 
-            {
+        {
+            "id": 18,
             "name": "Captain Marvel: A new subtitle",
             "year": "2019",
-            "rating": "7.8",
-            "description": "The plot is unknown at this time.",
+            "rating": 7.8,
+            "description": "There is no description yet",
             "images": [],
             "genres": [
-                    {
-                        "id": 1,
-                        "name": "Action"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Sci-Fi"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Adventure"
-                    }
-                ],
-                "actors": [
-                    {
-                        "id": 17,
-                        "name": "Samuel L. Jackson",
-                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
-                        "date_of_birth": "1948-12-21 00:00:00",
-                        "age": 68,
-                        "character": "Nick Fury",
-                        "images": [
-                            {
-                                "id": 14,
-                                "url": "https://urlgoeshere.com/storage/samuel-l-jackson.jpg",
-                                "mime": "image/jpeg",
-                                "size": 11948
-                            }
-                        ]
-                    }
-                ]
-            }
+                {
+                    "id": 1,
+                    "name": "Action Movies"
+                },
+                {
+                    "id": 4,
+                    "name": "Sci-Fi"
+                },
+                {
+                    "id": 5,
+                    "name": "Adventure"
+                }
+            ],
+            "actors": [
+                {
+                    "id": 17,
+                    "name": "Samuel L. Jackson",
+                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                    "date_of_birth": "1948-12-21 00:00:00",
+                    "character": "Nick Fury",
+                    "dob": "21/12/1948",
+                    "images": [],
+                    "age": 68
+                }
+            ]
+        }
 
 ### Delete Movie [DELETE]
 
@@ -278,18 +297,16 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
     + Headers
 
-            Location: /movies/3/images
+            Location: /movies/3/images/8
 
     + Body
 
-            [
-                {
-                    "id": 19,
-                    "url": "https://urlgoeshere.com/storage/iron-man-2.jpg",
-                    "mime": "image/jpeg",
-                    "size": 11948
-                }
-            ]
+            {
+                "id": 8,
+                "url": "http://localhost:8080/images/iron-man-2-1511100858.jpg",
+                "mime": "image/jpeg",
+                "size": 7025
+            }
 
 ### Retrieve all Images for a specified Movie [GET]
 
@@ -300,10 +317,16 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
         [
             {
-                "id": 1,
-                "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+                "id": 6,
+                "url": "http://localhost:8080/images/ironman2.jpg",
                 "mime": "image/jpeg",
-                "size": 11948
+                "size": 12122
+            },
+            {
+                "id": 8,
+                "url": "http://localhost:8080/images/iron-man-2-1511100858.jpg",
+                "mime": "image/jpeg",
+                "size": 7025
             }
         ]
 
@@ -312,23 +335,23 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 ### Retrieve Specific Image [GET]
 
 + Parameters
-    + movie_id: `1` (string) - The ID of the movie
-    + image_id: `1` (string) - The ID of the Image
+    + movie_id: `3` (string) - The ID of the movie
+    + image_id: `8` (string) - The ID of the Image
 
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "url": "https://urlgoeshere.com/storage/iron-man.jpg",
+            "id": 3,
+            "url": "http://localhost:8080/images/th.jpg",
             "mime": "image/jpeg",
-            "size": 11948
+            "size": 11481
         }
 
 ### Delete Specific Image [DELETE]
 
 + Parameters
-    + movie_id: `1` (string) - The ID of the movie
-    + image_id: `1` (string) - The ID of the Image
+    + movie_id: `3` (string) - The ID of the movie
+    + image_id: `8` (string) - The ID of the Image
 
 + Response 204 (application/json)
 
@@ -340,27 +363,30 @@ This action returns a list of all Genres and their ids.
 
 + Response 200 (appliction/json)
 
+
         [
+        //This response has been concatenated. each array returns multiple results
             {
                 "id": 1,
-                "name": "Action",
+                "name": "Action Movies",
                 "movies": [
                     {
-                       "id": "1",
-                       "name": "Iron Man",
-                       "rating": "7.9",
-                       "year": "2008",
-                       "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-                       "actors": [
+                        "id": 1,
+                        "name": "Iron Man",
+                        "year": "2008",
+                        "rating": 7.9,
+                        "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                        "actors": [
                             {
-                               "id": 1,
-                               "name": "Robert Downey Jr.",
-                               "dob": "4/04/1965",
-                               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                               "character": "Tony Stark"
-                             }
-                       ]
-                     }
+                                "id": 1,
+                                "name": "Robert Downey Jr.",
+                                "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                                "character": "Tony Stark",
+                                "dob": "04/04/1965",
+                                "age": 52
+                            }
+                        ]
+                    }
                 ]
             }
         ]
@@ -377,43 +403,45 @@ This action returns a list of all Genres and their ids.
 
     + Headers
 
-            Location: /genres/9
+            Location: /genres/13
 
     + Body
 
-            {
-                "id": 7,
-                "name": "Crime"
-            }
+        {
+            "id": 13,
+            "name": "Crime"
+        }
 
 ## Specific Genre [/genres/{genre_id}]
 
 ### Retrieve Genre [GET]
 + Parameters
-    + genre_id: `1` (string) - The ID of the Genre
+    + genre_id: `3` (string) - The ID of the Genre
 
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "name": "Action",
+            "id": 3,
+            "name": "Fantasy",
             "movies": [
                 {
-                   "id": "1",
-                   "name": "Iron Man",
-                   "rating": "7.9",
-                   "year": "2008",
-                   "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-                   "actors": [
+                    "id": 10,
+                    "name": "Guardians of the Galaxy",
+                    "year": "2014",
+                    "rating": 8.1,
+                    "description": "A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.",
+                    "actors": [
                         {
-                           "id": 1,
-                           "name": "Robert Downey Jr.",
-                           "dob": "4/04/1965",
-                           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                           "character": "Tony Stark"
-                         }
-                   ]
-                 }
+                            "id": 23,
+                            "name": "Chris Pratt",
+                            "bio": "Christopher Michael Pratt is an American film and television actor. He came to prominence from his television roles, including Bright Abbott in Everwood (2002), Ch  in The O.C.(2003), and Andy Dwyer and Parks and Recreation",
+                            "date_of_birth": "1979-06-21 00:00:00",
+                            "character": "Peter Quill",
+                            "dob": "21/06/1979",
+                            "age": 38
+                        }
+                    ]
+                }
             ]
         }
 
@@ -435,7 +463,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
             "name": "Action Movies",
             "moviesSync": [1,2,4,5,6],
             "moviesAttach": [3],
-            "moviesDetach": [5,6]
+            "moviesDetach": [1,2,5,6]
         }
 
 + Response 200 (application/json)
@@ -445,21 +473,23 @@ If more than one of hese optional arrays are used, they will be applied in the o
             "name": "Action Movies",
             "movies": [
                 {
-                   "id": "1",
-                   "name": "Iron Man",
-                   "rating": "7.9",
-                   "year": "2008",
-                   "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-                   "actors": [
+                    "id": 4,
+                    "name": "Thor",
+                    "year": "2011",
+                    "rating": 7,
+                    "description": "The powerful, but arrogant god Thor, is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders.",
+                    "actors": [
                         {
-                           "id": 1,
-                           "name": "Robert Downey Jr.",
-                           "dob": "4/04/1965",
-                           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                           "character": "Tony Stark"
-                         }
-                   ]
-                 }
+                            "id": 11,
+                            "name": "Chris Hemsworth",
+                            "bio": "Chris Hemsworth was born in Melbourne, Australia, to Leonie (van Os), a teacher of English, and Craig Hemsworth, a social-services counselor.",
+                            "date_of_birth": "1983-08-11 00:00:00",
+                            "character": "Thor",
+                            "dob": "11/08/1983",
+                            "age": 34
+                        }
+                    ]
+                }
             ]
         }
 
@@ -492,20 +522,26 @@ If more than one of hese optional arrays are used, they will be applied in the o
 
     + Headers
 
-            Location: /actors/42
+            Location: /actors/45
 
     + Body
 
             {
-               "name": "Tom Holland",
-               "dob": "01/06/1996",
-               "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
-               "movies": [
+                "id": 45,
+                "name": "Tom Holland",
+                "dob": "01/06/1996",
+                "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+                "age": 21,
+                "movies": [
                     {
                         "id": 13,
+                        "name": "Captain America: Civil War",
+                        "year": "2016",
+                        "rating": 7.9,
+                        "description": "Political interference in the Avengers' activities causes a rift between former allies Captain America and Iron Man.",
                         "character": "Peter Parker"
                     }
-               ]
+                ]
             }
 
 ### List all Actors [GET]
@@ -514,14 +550,35 @@ If more than one of hese optional arrays are used, they will be applied in the o
 
         [
             {
-               "id": 1,
-               "name": "Robert Downey Jr.",
-               "dob": "4/04/1965",
-               "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-               "movies": [
-                    "id": 1,
-                    "character": "Tony Stark"
-               ]
+                "id": 45,
+                "name": "Tom Holland",
+                "dob": "01/06/1996",
+                "age": 21,
+                "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+                "movies": [
+                    {
+                        "id": 13,
+                        "name": "Captain America: Civil War",
+                        "year": "2016",
+                        "rating": 7.9,
+                        "description": "Political interference in the Avengers' activities causes a rift between former allies Captain America and Iron Man.",
+                        "character": "Peter Parker",
+                        "genres": [
+                            {
+                                "id": 4,
+                                "name": "Sci-Fi"
+                            },
+                            {
+                                "id": 5,
+                                "name": "Adventure"
+                            },
+                            {
+                                "id": 6,
+                                "name": "Thriller"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
 
@@ -530,22 +587,41 @@ If more than one of hese optional arrays are used, they will be applied in the o
 ### Retrieve Actor [GET]
 
 + Parameters
-    + actor_id: `1` (string) - ID of the actor
+    + actor_id: `45` (string) - ID of the actor
 
 + Response 200 (application/json)
 
 
         {
-           "id": 1,
-           "name": "Robert Downey Jr.",
-           "dob": "4/04/1965",
-           "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-           "movies": [
+            "id": 45,
+            "name": "Tom Holland",
+            "dob": "01/06/1996",
+            "age": 21,
+            "bio": "Thomas Stanley Holland was born in Kingston-upon-Thames, Surrey, to Nicola Elizabeth (Frost), a photographer, and Dominic Holland (Dominic Anthony Holland), who is a comedian and author.",
+            "movies": [
                 {
-                    "id": 1,
-                    "character": "Tony Stark"
+                    "id": 13,
+                    "name": "Captain America: Civil War",
+                    "year": "2016",
+                    "rating": 7.9,
+                    "description": "Political interference in the Avengers' activities causes a rift between former allies Captain America and Iron Man.",
+                    "character": "Peter Parker",
+                    "genres": [
+                        {
+                            "id": 4,
+                            "name": "Sci-Fi"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Adventure"
+                        },
+                        {
+                            "id": 6,
+                            "name": "Thriller"
+                        }
+                    ]
                 }
-           ]
+            ]
         }
 
 
@@ -557,8 +633,8 @@ If more than one of hese optional arrays are used, they will be applied in the o
 + Request (application/json)
 
         {
-            "name": "Robert Downey Jr.",
-            "dob": "4/04/1965",
+            "name": "New Name",
+            "dob": "4/04/1999",
             "bio": "Updated Bio",
             "moviesSync": [
                 {
@@ -594,24 +670,71 @@ If more than one of hese optional arrays are used, they will be applied in the o
 + Response 200 (application/json)
 
         {
-           "id": 1,
-           "name": "Robert Downey Jr.",
-           "dob": "4/04/1965",
-           "bio": "Updated Bio",
-           "movies": [
+            "id": 1,
+            "name": "New Name",
+            "dob": "04/04/1999",
+            "age": 18,
+            "bio": "Updated Bio",
+            "movies": [
                 {
                     "id": 1,
-                    "character": "Tony Stark"
+                    "name": "Iron Man",
+                    "year": "2008",
+                    "rating": 7.9,
+                    "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                    "character": "Tony Stark",
+                    "genres": [
+                        {
+                            "id": 4,
+                            "name": "Sci-Fi"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Adventure"
+                        }
+                    ]
                 },
                 {
                     "id": 3,
-                    "character": "Tony Stark"
+                    "name": "Iron Man 2",
+                    "year": "2010",
+                    "rating": 7,
+                    "description": "With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy.",
+                    "character": "Tony Stark",
+                    "genres": [
+                        {
+                            "id": 4,
+                            "name": "Sci-Fi"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Adventure"
+                        },
+                        {
+                            "id": 1,
+                            "name": "Action Movies"
+                        }
+                    ]
                 },
                 {
                     "id": 6,
-                    "character": "Tony Stark"
+                    "name": "The Avengers",
+                    "year": "2012",
+                    "rating": 8.1,
+                    "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                    "character": "Tony Stark",
+                    "genres": [
+                        {
+                            "id": 4,
+                            "name": "Sci-Fi"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Adventure"
+                        }
+                    ]
                 }
-           ]
+            ]
         }
 
 ### Delete Actor [DELETE]
@@ -642,18 +765,16 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
     + Headers
 
-            Location: /actors/1/images/15
+            Location: /actors/1/images/10
 
     + Body
 
-            [
-                {
-                    "id": 14,
-                    "url": "https://urlgoeshere.com/storage/rdj.jpg",
-                    "mime": "image/jpeg",
-                    "size": 11948
-                }
-            ]
+            {
+                "id": 10,
+                "url": "http://localhost:8080/images/rdj-1511102610.jpg",
+                "mime": "image/jpeg",
+                "size": 7025
+            }
 
 ### Retrieve all Images for a specified Movie [GET]
 
@@ -664,10 +785,16 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
         [
             {
-                "id": 14,
-                "url": "https://urlgoeshere.com/storage/rdj.jpg",
+                "id": 1,
+                "url": "http://localhost:8080/images/rdj.jpg",
                 "mime": "image/jpeg",
-                "size": 11948
+                "size": 11684
+            },
+            {
+                "id": 10,
+                "url": "http://localhost:8080/images/rdj-1511102610.jpg",
+                "mime": "image/jpeg",
+                "size": 7025
             }
         ]
 
@@ -677,15 +804,15 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 
 + Parameters
     + actor_id: `1` (string) - The ID of the actor
-    + image_id: `18` (string) - The ID of the Image
+    + image_id: `10` (string) - The ID of the Image
 
 + Response 200 (application/json)
 
         {
-            "id": 14,
-            "url": "https://urlgoeshere.com/storage/rdj.jpg",
+            "id": 10,
+            "url": "http://localhost:8080/images/rdj-1511102610.jpg",
             "mime": "image/jpeg",
-            "size": 11948
+            "size": 7025
         }
 
 ### Delete Specific Image [DELETE]

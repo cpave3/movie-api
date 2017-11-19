@@ -48,7 +48,7 @@ class API_ImageController extends Controller
         "url" => $image->url,
         "mime" => $image->mime,
         "size" => $image->size,
-      ],201)->header("Location", route("api.".explode(".", $route)[1].".show", $host->id));
+      ],201)->header("Location", route("api.".explode(".", $route)[1].".images.show", [$host->id, $image->id]));
     }
 
     public function list(Request $request, $id) {
@@ -116,7 +116,7 @@ class API_ImageController extends Controller
         return response()->json([], 400);
       }
       // Unified Logic
-      $image = Image::findOrFail($id);
+      $image = Image::findOrFail($image_id);
 
         $res = [
           "id" => $image->id,

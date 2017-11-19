@@ -22,7 +22,7 @@ class API_ActorController extends Controller
           foreach ($movie->genres as $genre) {
             // $actor->character = $actor->pivot->character;
             $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-            // unset($actor->date_of_birth);
+
           }
         }
 
@@ -50,15 +50,24 @@ class API_ActorController extends Controller
         $json['date_of_birth'] = Carbon::createFromFormat('!d/m/Y', $json['dob'])->format('Y-m-d H:i:s');
         $actor = Actor::create($json);
 
+        if (isset($json['movies'])) {
+          $attach = [];
+          foreach ($json['movies'] as $s) {
+            $attach[$s['id']] = ["character" => $s['character']];
+          }
+          $actor->movies()->attach($attach);
+        }
+
         foreach ($actor->movies as $movie) {
           $movie->character = $movie->pivot->character;
         }
 
-        $res[] = [
+        $res = [
           "id" => $actor->id,
           "name" => $actor->name,
           "dob" => Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y'),
           "bio" => $actor->bio,
+          "age" => $actor->age,
           "movies" => $actor->movies
         ];
 
@@ -79,11 +88,11 @@ class API_ActorController extends Controller
           foreach ($movie->genres as $genre) {
             // $actor->character = $actor->pivot->character;
             $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-            // unset($actor->date_of_birth);
+
           }
         }
 
-        $res[] = [
+        $res = [
           "id" => $actor->id,
           "name" => $actor->name,
           "dob" => $actor->dob,

@@ -25,7 +25,7 @@ class API_MovieController extends Controller
           $actor->character = $actor->pivot->character;
           $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
           $actor->images = $actor->images;
-          // unset($movie->date_of_birth);
+
         }
 
         $res[] = [
@@ -81,7 +81,7 @@ class API_MovieController extends Controller
           $actor->movies()->attach($attach);
         }
 
-        $res[] = [
+        $res = [
           "id" => $movie->id,
           "name" => $movie->name,
           "year" => $movie->year,
@@ -109,7 +109,7 @@ class API_MovieController extends Controller
           $actor->images = $actor->images;
         }
 
-        $res[] = [
+        $res = [
           "id" => $movie->id,
           "name" => $movie->name,
           "year" => $movie->year,
@@ -174,7 +174,7 @@ class API_MovieController extends Controller
           $actor->images = $actor->images;
       }
 
-      $res[] = [
+      $res = [
         "id" => $movie->id,
         "name" => $movie->name,
         "year" => $movie->year,

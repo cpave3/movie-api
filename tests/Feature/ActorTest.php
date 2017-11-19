@@ -48,7 +48,6 @@ class ActorTest extends TestCase
       $this->json('POST', route('api.actors.store'), $data)
            ->assertStatus(201)
            ->assertJsonStructure([
-             "*" => [
                "id",
                "name",
                "dob",
@@ -59,7 +58,6 @@ class ActorTest extends TestCase
                    "character"
                  ]
                ]
-             ]
            ]);
     }
 
@@ -73,7 +71,6 @@ class ActorTest extends TestCase
       $this->json("GET", route('api.actors.show', 1))
             ->assertStatus(200)
             ->assertJsonStructure([
-              "*" => [
                 "id",
                 "name",
                 "dob",
@@ -85,7 +82,6 @@ class ActorTest extends TestCase
                     "character"
                   ]
                 ]
-              ]
             ]);
     }
 
