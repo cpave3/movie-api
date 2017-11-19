@@ -8,6 +8,7 @@ A simple API for interacting with data about various movies, actors and genres.
 ## User Authentication [/login]
 
 ### Login [POST]
+This unsecured endpoint accepts an email and password and returns inormation about the User including their API keys
 
 + Request (application/json)
 
@@ -30,6 +31,7 @@ A simple API for interacting with data about various movies, actors and genres.
 This section allows viewing existing and creating new movies
 
 ### List All Movies [GET]
+This action returns an array of all movies, their images, genres and actors
 
 + Response 200 (application/json)
 
@@ -85,7 +87,6 @@ This section allows viewing existing and creating new movies
         ]
 
 ### Create a New Movie [POST]
-
 You may add a movie to the database using this action. It takes a JSON
 object containing the movie's name, rating, genre(s), description and actor(s).
 Genre and actors should be passed in as an array of ids
@@ -153,6 +154,8 @@ Genre and actors should be passed in as an array of ids
 This section allows retrieving specific movies, editing movies
 
 ### Retrieve Movie [GET]
+This action returns an object containing the requested movie, its images, genres and actors
+
 + Parameters
     + movie_id: `1` (string) - The id of the Movie.
 
@@ -209,7 +212,6 @@ This section allows retrieving specific movies, editing movies
         }
 
 ### Update Movie [PUT]
-
 This action allows you to overwrite the data belonging to a movie. Only attributes which you specify will be affected.
 
 + Parameters
@@ -266,6 +268,7 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
             }
 
 ### Delete Movie [DELETE]
+This action deletes the movie and returns an empty 204 response
 
 + Parameters
     + movie_id: `2` (string) - The ID of the movie
@@ -275,7 +278,6 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
 ## Movie Images [/movies/{movie_id}/images]
 
 ### Upload an Image [POST]
-
 This action allows you upload base64 encoded images to a specific movie.
 This is only suitable for small-ish images due to base64 encoding file bloat.
 
@@ -305,6 +307,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
             }
 
 ### Retrieve all Images for a specified Movie [GET]
+This action returns an array of all images for a given movie
 
 + Parameters
     + movie_id: `1` (string) - The id of the Movie.
@@ -329,6 +332,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 ## Specific Movie Image [/movies/{movie_id}/images/{image_id}]
 
 ### Retrieve Specific Image [GET]
+This action returns a specific image for a given movie
 
 + Parameters
     + movie_id: `3` (string) - The ID of the movie
@@ -344,6 +348,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
         }
 
 ### Delete Specific Image [DELETE]
+This action delets a specific image for a given movie
 
 + Parameters
     + movie_id: `3` (string) - The ID of the movie
@@ -355,7 +360,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 This section allows for interaction with the Movie Genres
 
 ### List all Genres [GET]
-This action returns a list of all Genres and their ids.
+This action returns a list of all Genres, their movies and the actors of those movies.
 
 + Response 200 (appliction/json)
 
@@ -388,6 +393,7 @@ This action returns a list of all Genres and their ids.
         ]
 
 ### Create a New Genre [POST]
+This action creates a new genre
 
 + Request (application/json)
 
@@ -411,6 +417,8 @@ This action returns a list of all Genres and their ids.
 ## Specific Genre [/genres/{genre_id}]
 
 ### Retrieve Genre [GET]
+This action returns the given genre, its movies and that movie's actors
+
 + Parameters
     + genre_id: `3` (string) - The ID of the Genre
 
@@ -490,6 +498,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
         }
 
 ### Delete Genre [DELETE]
+This action allows you to delete a genre
 
 + Parameters
     + genre_id: `1` (string) - The ID of the Genre
@@ -499,6 +508,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
 ## Actor Collection [/actors]
 
 ### Create a New Actor [POST]
+This action can create a new actor and associate them with movies
 
 + Request (application/json)
 
@@ -541,6 +551,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
             }
 
 ### List all Actors [GET]
+This action returns and actor, the movies they are in, and the genres of those movies
 
 + Response 200 (application/json)
 
@@ -581,6 +592,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
 ## Specific Actor [/actors/{actor_id}]
 
 ### Retrieve Actor [GET]
+This action returns a specific actor, their movies and those movies' genres
 
 + Parameters
     + actor_id: `45` (string) - ID of the actor
@@ -620,8 +632,8 @@ If more than one of hese optional arrays are used, they will be applied in the o
             ]
         }
 
-
 ### Update Actor [PUT]
+This action updates an actor's details and associated movies
 
 + Parameters
     + actor_id: `1` (string) - ID of the actor
@@ -734,6 +746,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
         }
 
 ### Delete Actor [DELETE]
+This action deletes a given actor
 
 + Parameters
     + actor_id: `1` (string) - ID of the actor
@@ -743,9 +756,7 @@ If more than one of hese optional arrays are used, they will be applied in the o
 ## Actor Images [/actors/{actor_id}/images]
 
 ### Upload an Image [POST]
-
-This action allows you upload base64 encoded images to a specific actor.
-This is only suitable for small-ish images due to base64 encoding file bloat.
+This action uploads a base64 encoded image to a specific actor with a given file name
 
 + Parameters
     + actor_id: `1` (string) - The id of the Actor.
@@ -773,6 +784,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
             }
 
 ### Retrieve all Images for a specified Movie [GET]
+This action returns an array of allimages for a given actor
 
 + Parameters
     + actor_id: `1` (string) - The id of the Actor.
@@ -797,6 +809,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
 ## Specific Movie Image [/actors/{actor_id}/images/{image_id}]
 
 ### Retrieve Specific Image [GET]
+This action returns a specific image for a given actor
 
 + Parameters
     + actor_id: `1` (string) - The ID of the actor
@@ -812,6 +825,7 @@ This is only suitable for small-ish images due to base64 encoding file bloat.
         }
 
 ### Delete Specific Image [DELETE]
+This action deletes a specific image for a given actor.
 
 + Parameters
     + actor_id: `1` (string) - The ID of the actor
