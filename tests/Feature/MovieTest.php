@@ -203,12 +203,7 @@ class MovieTest extends TestCase
                "description",
                "images" => [
                  "*" => [
-                   "*" => [
-                     "id",
-                     "url",
-                     "mime",
-                     "size"
-                   ]
+
                  ]
                ],
                "genres" => [

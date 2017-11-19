@@ -23,7 +23,10 @@ class Image extends Model
 
     protected $hidden = [
       'created_at',
-      'updated_at'
+      'updated_at',
+      'filename',
+      'imageable_id',
+      'imageable_type'
     ];
 
     public function imageable() {
