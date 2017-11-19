@@ -11,10 +11,10 @@ A simple API for interacting with data about various movies, actors and genres.
 
 + Request (application/json)
 
-        {
-            "email": "admin@admin.com",
-            "password": "secret"
-        }
+          {
+              "email": "admin@admin.com",
+              "password": "secret"
+          }
 
 + Response 200 (application/json)
 
@@ -114,42 +114,40 @@ Genre and actors should be passed in as an array of ids
 
     + Body
 
-        [
-            {
-                "id": 19,
-                "name": "Captain Marvel",
-                "year": "2019",
-                "rating": "0.0",
-                "description": "The plot is unknown at this time.",
-                "images": [],
-                "genres": [
-                    {
-                        "id": 1,
-                        "name": "Action Movies"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Sci-Fi"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Adventure"
-                    }
-                ],
-                "actors": [
-                    {
-                        "id": 17,
-                        "name": "Samuel L. Jackson",
-                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
-                        "date_of_birth": "1948-12-21 00:00:00",
-                        "character": "Nick Fury",
-                        "dob": "21/12/1948",
-                        "images": [],
-                        "age": 68
-                    }
-                ]
-            }
-        ]
+        {
+            "id": 19,
+            "name": "Captain Marvel",
+            "year": "2019",
+            "rating": "0.0",
+            "description": "The plot is unknown at this time.",
+            "images": [],
+            "genres": [
+                {
+                    "id": 1,
+                    "name": "Action Movies"
+                },
+                {
+                    "id": 4,
+                    "name": "Sci-Fi"
+                },
+                {
+                    "id": 5,
+                    "name": "Adventure"
+                }
+            ],
+            "actors": [
+                {
+                    "id": 17,
+                    "name": "Samuel L. Jackson",
+                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                    "date_of_birth": "1948-12-21 00:00:00",
+                    "character": "Nick Fury",
+                    "dob": "21/12/1948",
+                    "images": [],
+                    "age": 68
+                }
+            ]
+        }
 
 ## Specific Movie [/movies/{movie_id}]
 This section allows retrieving specific movies, editing movies
@@ -161,56 +159,54 @@ This section allows retrieving specific movies, editing movies
 + Response 200 (application/json)
 
 
-        [
-            {
-                "id": 1,
-                "name": "Iron Man",
-                "year": "2008",
-                "rating": 7.9,
-                "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-                "images": [
-                    {
-                        "id": 4,
-                        "url": "http://localhost:8080/images/ironman.jpg",
-                        "mime": "image/jpeg",
-                        "size": 13354
-                    }
-                ],
-                "genres": [
-                    {
-                        "id": 1,
-                        "name": "Action Movies"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Sci-Fi"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Adventure"
-                    }
-                ],
-                "actors": [
-                    {
-                        "id": 1,
-                        "name": "Robert Downey Jr.",
-                        "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
-                        "date_of_birth": "1965-04-04 00:00:00",
-                        "character": "Tony Stark",
-                        "dob": "04/04/1965",
-                        "age": 52,
-                        "images": [
-                            {
-                                "id": 1,
-                                "url": "http://localhost:8080/images/rdj.jpg",
-                                "mime": "image/jpeg",
-                                "size": 11684
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        {
+            "id": 1,
+            "name": "Iron Man",
+            "year": "2008",
+            "rating": 7.9,
+            "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+            "images": [
+                {
+                    "id": 4,
+                    "url": "http://localhost:8080/images/ironman.jpg",
+                    "mime": "image/jpeg",
+                    "size": 13354
+                }
+            ],
+            "genres": [
+                {
+                    "id": 1,
+                    "name": "Action Movies"
+                },
+                {
+                    "id": 4,
+                    "name": "Sci-Fi"
+                },
+                {
+                    "id": 5,
+                    "name": "Adventure"
+                }
+            ],
+            "actors": [
+                {
+                    "id": 1,
+                    "name": "Robert Downey Jr.",
+                    "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                    "date_of_birth": "1965-04-04 00:00:00",
+                    "character": "Tony Stark",
+                    "dob": "04/04/1965",
+                    "age": 52,
+                    "images": [
+                        {
+                            "id": 1,
+                            "url": "http://localhost:8080/images/rdj.jpg",
+                            "mime": "image/jpeg",
+                            "size": 11684
+                        }
+                    ]
+                }
+            ]
+        }
 
 ### Update Movie [PUT]
 

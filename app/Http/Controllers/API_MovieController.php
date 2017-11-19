@@ -194,6 +194,6 @@ class API_MovieController extends Controller
       $movie->genres()->sync([]);
       $movie->actors()->sync([]);
       $movie->delete();
-      return response(null, 204);
+      return response()->json([], 204);
     }
 }
