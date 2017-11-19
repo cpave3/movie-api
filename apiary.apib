@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://github.com/cpave3/movie-api/
+HOST: http://localhost:8080/api/v1/
 
 # movie-api
 
@@ -114,40 +114,40 @@ Genre and actors should be passed in as an array of ids
 
     + Body
 
-        {
-            "id": 19,
-            "name": "Captain Marvel",
-            "year": "2019",
-            "rating": "0.0",
-            "description": "The plot is unknown at this time.",
-            "images": [],
-            "genres": [
-                {
-                    "id": 1,
-                    "name": "Action Movies"
-                },
-                {
-                    "id": 4,
-                    "name": "Sci-Fi"
-                },
-                {
-                    "id": 5,
-                    "name": "Adventure"
-                }
-            ],
-            "actors": [
-                {
-                    "id": 17,
-                    "name": "Samuel L. Jackson",
-                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
-                    "date_of_birth": "1948-12-21 00:00:00",
-                    "character": "Nick Fury",
-                    "dob": "21/12/1948",
-                    "images": [],
-                    "age": 68
-                }
-            ]
-        }
+            {
+                "id": 19,
+                "name": "Captain Marvel",
+                "year": "2019",
+                "rating": "0.0",
+                "description": "The plot is unknown at this time.",
+                "images": [],
+                "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action Movies"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 17,
+                        "name": "Samuel L. Jackson",
+                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                        "date_of_birth": "1948-12-21 00:00:00",
+                        "character": "Nick Fury",
+                        "dob": "21/12/1948",
+                        "images": [],
+                        "age": 68
+                    }
+                ]
+            }
 
 ## Specific Movie [/movies/{movie_id}]
 This section allows retrieving specific movies, editing movies
@@ -230,40 +230,40 @@ This action allows you to overwrite the data belonging to a movie. Only attribut
 
     + Body
 
-        {
-            "id": 18,
-            "name": "Captain Marvel: A new subtitle",
-            "year": "2019",
-            "rating": 7.8,
-            "description": "There is no description yet",
-            "images": [],
-            "genres": [
-                {
-                    "id": 1,
-                    "name": "Action Movies"
-                },
-                {
-                    "id": 4,
-                    "name": "Sci-Fi"
-                },
-                {
-                    "id": 5,
-                    "name": "Adventure"
-                }
-            ],
-            "actors": [
-                {
-                    "id": 17,
-                    "name": "Samuel L. Jackson",
-                    "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
-                    "date_of_birth": "1948-12-21 00:00:00",
-                    "character": "Nick Fury",
-                    "dob": "21/12/1948",
-                    "images": [],
-                    "age": 68
-                }
-            ]
-        }
+            {
+                "id": 18,
+                "name": "Captain Marvel: A new subtitle",
+                "year": "2019",
+                "rating": 7.8,
+                "description": "There is no description yet",
+                "images": [],
+                "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action Movies"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 17,
+                        "name": "Samuel L. Jackson",
+                        "bio": "Samuel L. Jackson is an American producer and highly prolific actor, having appeared in over 100 films, including Die Hard with a Vengeance (1995), Unbreakable (2000), Shaft (2000), Formula 51 (2001), Black Snake Moan (2006), Snakes on a Plane (2006), and the Star Wars prequel trilogy (1999-2005), as well as the Marvel Cinematic Universe. ",
+                        "date_of_birth": "1948-12-21 00:00:00",
+                        "character": "Nick Fury",
+                        "dob": "21/12/1948",
+                        "images": [],
+                        "age": 68
+                    }
+                ]
+            }
 
 ### Delete Movie [DELETE]
 
@@ -391,9 +391,9 @@ This action returns a list of all Genres and their ids.
 
 + Request (application/json)
 
-        {
-            "name": "Crime"
-        }
+            {
+                "name": "Crime"
+            }
 
 + Response 201 (application/json)
 
@@ -403,10 +403,10 @@ This action returns a list of all Genres and their ids.
 
     + Body
 
-        {
-            "id": 13,
-            "name": "Crime"
-        }
+            {
+                "id": 13,
+                "name": "Crime"
+            }
 
 ## Specific Genre [/genres/{genre_id}]
 
