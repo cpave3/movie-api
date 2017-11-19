@@ -19,7 +19,7 @@ Route::group(['prefix' => 'v1'], function() {
   Route::post('/login', 'API_LoginController@login')->name('api.login');
 
   // Secure Api Routes
-  Route::group(['middleware' => 'auth.apikey'], function() {
+  Route::group(['middleware' => 'api'], function() {
 
       Route::get('/', function() {
         $routes = Route::getRoutes();
