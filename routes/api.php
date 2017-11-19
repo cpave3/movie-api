@@ -21,6 +21,19 @@ Route::group(['prefix' => 'v1'], function() {
   // Secure Api Routes
   Route::group(['middleware' => 'auth.apikey'], function() {
 
+      Route::get('/', function() {
+        $routes = Route::getRoutes();
+        $res = [];
+        $res["documentaion"] = "https://app.apiary.io/movieapi62";
+        $res["valid_endpoints"] = [];
+        foreach ($routes as $route) {
+          if ($route->action['prefix'] == "api/v1") {
+            $res["valid_endpoints"][] = [$route->methods[0] => $route->uri];
+          }
+        }
+        return response()->json($res, 200);
+      })->name('api.index');
+
       // Genres
       Route::post('/genres', 'API_GenreController@store')->name('api.genres.store');
       Route::get('/genres', 'API_GenreController@list')->name('api.genres.list');
