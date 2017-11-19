@@ -48,7 +48,7 @@ class API_ImageController extends Controller
         "url" => $image->url,
         "mime" => $image->mime,
         "size" => $image->size,
-      ],201);
+      ],201)->header("Location", route("api.".explode(".", $route)[1].".show", $host->id));
     }
 
     public function list(Request $request, $id) {

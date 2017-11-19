@@ -24,7 +24,7 @@ class API_GenreController extends Controller
           "id" => $genre->id,
           "name" => $genre->name
         ];
-        return response()->json($res, 201);
+        return response()->json($res, 201)->header("Location", route("api.genres.show", $genre->id));
       } else {
         //Bad Request
         return response()->json([], 400);
@@ -107,7 +107,7 @@ class API_GenreController extends Controller
         "movies" => $genre->movies
       ];
 
-      return response()->json($res, 200);
+      return response()->json($res, 200)->header("Location", route("api.genres.show", $genre->id));
     }
 
     public function delete($genre_id) {

@@ -92,7 +92,7 @@ class API_MovieController extends Controller
           "actors" => $movie->actors
         ];
 
-        return response()->json($res, 201);
+        return response()->json($res, 201)->header("Location", route("api.movies.show", $movie->id));
       } else {
         //Bad Request
         return response()->json([], 400);
@@ -185,7 +185,7 @@ class API_MovieController extends Controller
         "actors" => $movie->actors
       ];
 
-      return response()->json($res, 200);
+      return response()->json($res, 200)->header("Location", route("api.movies.show", $movie->id));
 
     }
 

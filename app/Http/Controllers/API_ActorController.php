@@ -52,9 +52,6 @@ class API_ActorController extends Controller
 
         foreach ($actor->movies as $movie) {
           $movie->character = $movie->pivot->character;
-          foreach ($movie->genres as $genre) {
-            // $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
-          }
         }
 
         $res[] = [
@@ -65,7 +62,7 @@ class API_ActorController extends Controller
           "movies" => $actor->movies
         ];
 
-        return response()->json($res, 201);
+        return response()->json($res, 201)->header("Location", route("api.actors.show", $actor->id));
       } else {
         //Bad Request
         return response()->json([], 400);
@@ -145,7 +142,7 @@ class API_ActorController extends Controller
         "movies" => $actor->movies
       ];
 
-      return response()->json($res, 200);
+      return response()->json($res, 200)->header("Location", route("api.actors.show", $actor->id));
 
     }
 
