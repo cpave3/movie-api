@@ -50,9 +50,11 @@ For a list of all supported endpoints and requests, please see the included `api
 
 The project was developed using Test Driven Development. As such, each method in each controller is backed by a collection of tests to ensure that the output of the API meets expectations.
 
-Further to this, **Dredd** was used to test the API against the API Blueprint documentation
+Further to this, **Dredd** was used to test the API against the API Blueprint documentation. It must be noted that some Dredd tests failed. This is due to inexperience with Dredd, as I was unfamiliar with best practices when it comes to testing endpoints using this tool. Some tests would fail simply due to the order that the tests were performed in (deleting something and then later checking if it exists). This is because I wrote the API Blueprint with informing in mind, instead of testing. Although these tests failed, I have verified through other automated and manual tests that the endpoints in question do actually work as intended.
 
 
 ##What could be Improved
 
 If I were to do the project again, there are a few things I would like to change. The most significant of these is Image uploads. At the moment, Images can only be uploaded in base64 format via JSON. While this works, it is not ideal as the images bloat in size by about 30% when converted. I would not remove this option, but I would include an additional endpoint to allow image uploads with normal `multipart/form-data` style uploads. Ultimately, I would like to find a better solution for uploads which does not rely on base64, but does not break away from the JSON style requests of all the other endpoints.
+
+As mentioned above, some Dredd tests failed due to the example ids used in the `.apib` file. If I had more time, I would like to restructure the API Blueprint to allow the Dredd test to pass.
