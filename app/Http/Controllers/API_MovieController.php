@@ -11,6 +11,7 @@ use App\Movie;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class API_MovieController extends Controller
 {
@@ -49,6 +50,20 @@ class API_MovieController extends Controller
       $content = $request->instance();
       $json = $content->json()->all();
       $res = [];
+
+      $rules = [
+        "name" => "required",
+        "year" => "required",
+        "description" => "required",
+        "rating" => "numeric|required",
+        "genres" => "array",
+        "actors" => "array"
+      ];
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
 
       if (isset($json['name']) && isset($json['year']) && isset($json['rating']) && isset($json['description'])) {
         // Mandatory fields are valid
@@ -131,6 +146,20 @@ class API_MovieController extends Controller
       $content = $request->instance();
       $json = $content->json()->all();
 
+      $rules = [
+        "name" => "string|nullable",
+        "year" => "date_format:Y|nullable",
+        "description" => "string|nullable",
+        "rating" => "numeric|nullable",
+        "genres" => "array|nullable",
+        "actors" => "array|nullable"
+      ];
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
+
       if (isset($json['name']) || isset($json['year']) || isset($json['rating']) || isset($json['description'])) {
         $movie->update($json);
       }
@@ -200,6 +229,7 @@ class API_MovieController extends Controller
     }
 
     public function addFave(Request $request, $movie_id) {
+
       $user = $request->user();
       $movie = Movie::findOrFail($movie_id);
       $user->movies()->attach($movie);

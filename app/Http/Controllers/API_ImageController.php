@@ -11,6 +11,8 @@ use App\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
+use Illuminate\Support\Facades\Validator;
+
 class API_ImageController extends Controller
 {
     public function store(Request $request, $id) {
@@ -18,6 +20,18 @@ class API_ImageController extends Controller
       $content = $request->instance();
       $json = $content->json()->all();
       $res = [];
+
+      $rules = [
+        "file_name" => "string|required|regex:/.*\.[a-zA-Z]+/",
+        "raw_data" => "required"
+      ];
+
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
+
       if (explode(".", $route)[1] == "actors") {
         // Working with Actors
         $host = Actor::findOrFail($id);

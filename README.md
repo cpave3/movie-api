@@ -8,8 +8,8 @@ This API offers information on Movies, Actors and Genres and allows users to rea
 ## Installation
 1. Clone the Github Repository with `git clone https://github.com/cpave3/movie-api`
 2. Move into the new directory with `cd movie-api`
-3. Make the installer executable with `chmod +x ./install.sh`
-4. Run the installer with `./install.sh`
+3. Make the installer executable with `sudo chmod +x ./install.sh`
+4. Run the installer with `sudo ./install.sh`
 
 ## Usage
 Once the Installer script has finished, the API should be accessible at http://localhost:8080/api/v1/
@@ -58,3 +58,5 @@ Further to this, **Dredd** was used to test the API against the API Blueprint do
 If I were to do the project again, there are a few things I would like to change. The most significant of these is Image uploads. At the moment, Images can only be uploaded in base64 format via JSON. While this works, it is not ideal as the images bloat in size by about 30% when converted. I would not remove this option, but I would include an additional endpoint to allow image uploads with normal `multipart/form-data` style uploads. Ultimately, I would like to find a better solution for uploads which does not rely on base64, but does not break away from the JSON style requests of all the other endpoints.
 
 As mentioned above, some Dredd tests failed due to the example ids used in the `.apib` file. If I had more time, I would like to restructure the API Blueprint to allow the Dredd test to pass.
+
+If I had more time, I would also like to add additional features to the Favourites system, such as time favourited and possibly user defined tags. I would also like to rework the JSON validation to use custom requests instead of inline controller validation.

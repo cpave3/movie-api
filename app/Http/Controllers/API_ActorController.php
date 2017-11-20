@@ -10,6 +10,8 @@ use App\Movie;
 
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Validator;
+
 class API_ActorController extends Controller
 {
     public function list() {
@@ -44,6 +46,18 @@ class API_ActorController extends Controller
       $content = $request->instance();
       $json = $content->json()->all();
       $res = [];
+
+      $rules = [
+        "name" => "required",
+        "dob" => "date_format:d/m/Y",
+        "bio" => "required",
+        "movies" => "array|nullable"
+      ];
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
 
       if (isset($json['name']) && isset($json['dob']) && isset($json['bio'])) {
         // Mandatory fields are valid
@@ -110,6 +124,18 @@ class API_ActorController extends Controller
       $actor = Actor::findOrFail($actor_id);
       $content = $request->instance();
       $json = $content->json()->all();
+
+      $rules = [
+        "name" => "string|nullable",
+        "dob" => "date_format:d/m/Y|nullable",
+        "bio" => "string|nullable",
+        "movies" => "array|nullable"
+      ];
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
 
       if (isset($json['dob'])) {
         $json['date_of_birth'] = Carbon::createFromFormat('d/m/Y', $json['dob'])->format('Y-m-d H:i:s');

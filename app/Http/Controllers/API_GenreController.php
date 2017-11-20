@@ -10,12 +10,24 @@ use App\Actor;
 
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Validator;
+
 class API_GenreController extends Controller
 {
     public function store(Request $request) {
       $content = $request->instance();
       $json = $content->json()->all();
       $res = [];
+
+      $rules = [
+        "name" => "string|required",
+      ];
+
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
 
       if (isset($json['name'])) {
         // Mandatory fields are valid
@@ -78,6 +90,19 @@ class API_GenreController extends Controller
       $genre = Genre::findOrFail($genre_id);
       $content = $request->instance();
       $json = $content->json()->all();
+
+      $rules = [
+        "name" => "string|nullable",
+        "moviesAttach" => "array|nullable",
+        "moviesSync" => "array|nullable",
+        "moviesDetach" => "array|nullable"
+      ];
+
+      $validator = Validator::make($json, $rules);
+      if ($validator->fails()) {
+        //Pass errors to client
+        return response()->json(['errors'=>$validator->errors()], 400);
+      }
 
       $genre->name = $json['name'];
       $genre->save();
