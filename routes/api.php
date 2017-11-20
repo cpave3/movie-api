@@ -64,6 +64,12 @@ Route::group(['prefix' => 'v1'], function() {
       Route::get('/movies/{movie_id}/images', 'API_ImageController@list')->name('api.movies.images.list');
       Route::get('/movies/{movie_id}/images/{image_id}', 'API_ImageController@show')->name('api.movies.images.show');
       Route::delete('/movies/{movie_id}/images/{image_id}', 'API_ImageController@delete')->name('api.movies.images.delete');
+      // FAVOURITES
+      Route::get('/favourites', 'API_MovieController@listFave')->name('api.favourites.list');
+      Route::post('/favourites/{movie_id}', 'API_MovieController@addFave')->name('api.favourites.store');
+      Route::delete('/favourites/{movie_id}', 'API_MovieController@removeFave')->name('api.favourites.delete');
+
+
 
 
 

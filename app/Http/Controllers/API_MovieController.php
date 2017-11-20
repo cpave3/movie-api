@@ -10,6 +10,8 @@ use App\Movie;
 
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Auth;
+
 class API_MovieController extends Controller
 {
     public function list() {
@@ -196,4 +198,47 @@ class API_MovieController extends Controller
       $movie->delete();
       return response()->json([], 204);
     }
+
+    public function addFave(Request $request, $movie_id) {
+      $user = $request->user();
+      $movie = Movie::findOrFail($movie_id);
+      $user->movies()->attach($movie);
+      return response()->json([], 201);
+    }
+
+    public function removeFave(Request $request, $movie_id) {
+      $user = $request->user();
+      $movie = Movie::findOrFail($movie_id);
+      $user->movies()->detach($movie);
+      return response()->json([], 204);
+    }
+
+    public function listFave(Request $request) {
+      $user = $request->user();
+      $movies = $user->movies;
+      $res = [];
+
+      foreach ($movies as $movie) {
+        foreach ($movie->actors as $actor) {
+          $actor->character = $actor->pivot->character;
+          $actor->dob = Carbon::createFromFormat('Y-m-d H:i:s', $actor->date_of_birth)->format('d/m/Y');
+          $actor->images = $actor->images;
+
+        }
+
+        $res[] = [
+          "id" => $movie->id,
+          "name" => $movie->name,
+          "year" => $movie->year,
+          "rating" => $movie->rating,
+          "description" => $movie->description,
+          "images" => $movie->images,
+          "genres" => $movie->genres,
+          "actors" => $movie->actors
+        ];
+      }
+
+      return response()->json($res, 200);
+    }
+
 }

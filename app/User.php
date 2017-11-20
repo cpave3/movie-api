@@ -29,4 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function movies() {
+      return $this->belongsToMany('App\Movie');
+    }
+
 }

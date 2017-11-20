@@ -19,10 +19,6 @@ class Movie extends Model
     'updated_at'
   ];
 
-  // protected $appends = [
-  //   'actorsb'
-  // ];
-
   public function genres() {
     return $this->belongsToMany('App\Genre');
   }
@@ -34,8 +30,9 @@ class Movie extends Model
   public function images() {
     return $this->morphMany('App\Image', 'imageable');
   }
-  //
-  // public function getActorsbAttribute() {
-  //   return $this->actors;
-  // }
+
+  public function users() {
+    return $this->belongsToMany('App\User');
+  }
+
 }
