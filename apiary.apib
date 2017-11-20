@@ -275,6 +275,85 @@ This action deletes the movie and returns an empty 204 response
 
 + Response 204 (application/json)
 
+## Favourite Collection [/favourites]
+
+### List Favourites [GET]
+This action returns a list of all movies favourited by the user
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Iron Man",
+                "year": "2008",
+                "rating": 7.9,
+                "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+                "images": [
+                    {
+                        "id": 4,
+                        "url": "http://localhost:8080/images/ironman.jpg",
+                        "mime": "image/jpeg",
+                        "size": 13354
+                    }
+                ],
+                "genres": [
+                    {
+                        "id": 1,
+                        "name": "Action Movies"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Sci-Fi"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Adventure"
+                    }
+                ],
+                "actors": [
+                    {
+                        "id": 1,
+                        "name": "Robert Downey Jr.",
+                        "bio": "Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business.",
+                        "date_of_birth": "1965-04-04 00:00:00",
+                        "character": "Tony Stark",
+                        "dob": "04/04/1965",
+                        "age": 52,
+                        "images": [
+                            {
+                                "id": 1,
+                                "url": "http://localhost:8080/images/rdj.jpg",
+                                "mime": "image/jpeg",
+                                "size": 11684
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+
+
+## Favourite a Movie [/favourites/{movie_id}]
+
+### Add to Favourites [POST]
+
+This action adds the movie to the user's list of favourites
+
++ Parameters
+    + movie_id: `1` (string) - The ID of the movie
+
++ Response 201 (application/json)
+
+### Remove from Favourites [DELETE]
+
+This action removes the movie from the user's list of favourites
+
++ Parameters
+    + movie_id: `1` (string) - The ID of the movie
+
++ Response 204 (application/json)
+
 ## Movie Images [/movies/{movie_id}/images]
 
 ### Upload an Image [POST]
