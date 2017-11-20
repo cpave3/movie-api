@@ -1,4 +1,5 @@
 #!/bin/bash
+cp .env.example .env
 echo "[*] Bringing containers online"
 docker-compose up -d
 echo "[*] Installing PHP dependencies"
