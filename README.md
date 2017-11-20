@@ -16,6 +16,10 @@ Once the Installer script has finished, the API should be accessible at http://l
 
 For interacting with the API, I recommend [Postman](https://www.getpostman.com)
 
+To use the included Postman collection, Import the included JSON file and run the login request. This will return an API key. Create a global environment variable in Postman called "key" and set it's value as the API key you just got.
+
+You can now use Postman to test all the API endpoints.
+
 Please note that most endpoints require authentication. You can authenticate witht eh API by providing your API key in the header of your request like so: `X-Authorization: {api_key_goes_here}`
 
 In order to get an API key, you can submit the following request:
