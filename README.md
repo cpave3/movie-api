@@ -14,7 +14,7 @@ This API offers information on Movies, Actors and Genres and allows users to rea
 ## Usage
 Once the Installer script has finished, the API should be accessible at http://localhost:8080/api/v1/
 
-For interacting with the API, I reccomend [Postman](https://www.getpostman.com)
+For interacting with the API, I recommend [Postman](https://www.getpostman.com)
 
 Please note that most endpoints require authentication. You can authenticate witht eh API by providing your API key in the header of your request like so: `X-Authorization: {api_key_goes_here}`
 
