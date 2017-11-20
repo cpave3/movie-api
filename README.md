@@ -64,3 +64,5 @@ If I were to do the project again, there are a few things I would like to change
 As mentioned above, some Dredd tests failed due to the example ids used in the `.apib` file. If I had more time, I would like to restructure the API Blueprint to allow the Dredd test to pass.
 
 If I had more time, I would also like to add additional features to the Favourites system, such as time favourited and possibly user defined tags. I would also like to rework the JSON validation to use custom requests instead of inline controller validation.
+
+As I final note, I would also like to add image thumb-nailing to this project if i had more time. This would be done through the use of some additional routes and [This PHP Package](https://github.com/BKWLD/croppa) which would allow for easy dynamic re-sizing of images to suit client needs.
